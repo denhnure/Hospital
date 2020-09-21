@@ -1,0 +1,55 @@
+﻿<Window x:Class="Hospital.AddNewPatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Hospital.Properties"
+        x:Name="AddNewPatientWindowName"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.AddNewPatientRecord}" Height="360" Width="600">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="5px" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="25px" />
+            <Setter Property="MaxLines" Value="1" />
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Height" Value="25px" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="15px 0 15px 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="{x:Static p:Resources.PatientName}" />
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=PatientName}"></TextBox>
+        <Label Grid.Row="1" Content="{x:Static p:Resources.DoctorName}" />
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=DoctorName}"></TextBox>
+        <Label Grid.Row="2" Content="{x:Static p:Resources.Amount}" />
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" ></TextBox>
+        <Label Grid.Row="3" Content="{x:Static p:Resources.VisitDate}" />
+        <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding Path=VisitDate}"></DatePicker>
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button MinWidth="100px" Height="30px"
+                    Command="{Binding SaveNewPatientRecordCommand}"
+                    CommandParameter="{Binding ElementName=AddNewPatientWindowName}"
+                    Content="{x:Static p:Resources.Add}" />
+            <Button MinWidth="100px" Height="30px" Margin="10px 0 0 0" 
+                    Command="{Binding CancelNewPatientRecordCommand}"
+                    CommandParameter="{Binding ElementName=AddNewPatientWindowName}"
+                    Content="{x:Static p:Resources.Cancel}" />
+        </StackPanel>
+    </Grid>
+</Window>
