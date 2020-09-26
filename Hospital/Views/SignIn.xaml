@@ -4,29 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:Hospital.Properties"
-        x:Name="SignInWindowName"
+        xmlns:behaviours="clr-namespace:Hospital.Behaviours"
+        xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
         mc:Ignorable="d"
         FocusManager.FocusedElement="{Binding ElementName=passwordBox}">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style TargetType="Label">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Margin" Value="5px" />
             <Setter Property="Foreground" Value="White" />
         </Style>
-        <Style TargetType="{x:Type Button}">
+        <Style x:Key="ellipseButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Viewbox Width="24" Height="24">
                             <Canvas Height="512" Width="512">
-                                <Path Fill="white" Data="M487.95,256c0,127.89-104.06,231.94-232,231.94S24.05,383.89,24.05,256,128.09,24.06,256,24.06,487.95,128.11,487.95,256ZM256,0C114.84,0,0,114.85,0,256S114.84,512,256,512,512,397.16,512,256,397.16,0,256,0Z"></Path>
+                                <Ellipse Width="512" Height="512" Fill="Transparent" Stroke="White" StrokeThickness="25" />
                                 <Polygon Fill="white" Points="420.88 256 256.57 129.66 256.57 209.57 106.37 209.57 106.37 302.45 256.57 302.45 256.57 382.35 420.88 256"></Polygon>
                             </Canvas>
                         </Viewbox>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         </Style>
     </UserControl.Resources>
     <UserControl.Background>
@@ -38,13 +41,17 @@
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <Grid MaxWidth="320px" Grid.Column="1" HorizontalAlignment="Stretch">
+        <Grid Grid.Column="1" Visibility="{Binding Path=IsNotLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" 
+              MaxWidth="320px" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="145px" Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
-            <PasswordBox Name="passwordBox" Height="28px" Padding="2px 0" VerticalContentAlignment="Center" 
-                PasswordChanged="PasswordBox_PasswordChanged" />
+            <PasswordBox Name="passwordBox" Height="28px" Padding="2px 0" VerticalContentAlignment="Center">
+                <i:Interaction.Behaviors>
+                    <behaviours:PasswordBoxBehavior />
+                </i:Interaction.Behaviors>
+            </PasswordBox>
             <TextBlock IsHitTestVisible="False" Text="{x:Static p:Resources.Password}" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -57,10 +64,39 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <Button Grid.Column="1" Margin="5px 0"
+            <Button Grid.Column="1"
+                Style="{StaticResource ellipseButton}"
+                Margin="5px 0"
                 IsDefault="True"
                 Command="{Binding SignInCommand}" 
-                CommandParameter="{Binding ElementName=SignInWindowName}" />
+                CommandParameter="{Binding ElementName=passwordBox}" />
         </Grid>
+        <Image Grid.Column="1" Visibility="{Binding Path=IsProcessingLogin, Converter={StaticResource BooleanToVisibilityConverter}}"
+               Source="/images/spinner.png" Width="54" Height="54" RenderTransformOrigin="0.5, 0.5">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="noFreeze" />
+            </Image.RenderTransform>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                        Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+                        To="360" Duration="0:0:1" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+        <Button Grid.Column="1" Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Margin="5px 0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="OK"
+                MinHeight="28px"
+                MinWidth="120px"
+                IsDefault="True"
+                Command="{Binding TryLoginAgainCommand}" 
+                CommandParameter="{Binding ElementName=SignInWindowName}" />
     </Grid>
 </UserControl>
