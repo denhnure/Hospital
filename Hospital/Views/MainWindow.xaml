@@ -4,23 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:Hospital.Properties"
+        xmlns:viewModels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="70px"/>
-        </Grid.RowDefinitions>
-        <DataGrid Margin="10px 10px 10px 0" FontSize="16px" ItemsSource="{Binding Path=PatientRecords}" AutoGenerateColumns="False" CanUserAddRows="False" ColumnWidth="*">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=Amount}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.VisitDate}" Binding="{Binding Path=VisitDate, StringFormat=dd-MM-yyyy}" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Grid.Row="1" HorizontalAlignment="Right" Margin="10px" Padding="10px 0" 
-                Command="{Binding AddNewPatientRecordCommand}" 
-                Content="{x:Static p:Resources.AddNewPatientRecord}" />
-    </Grid>
+        Title="{x:Static p:Resources.Title}"
+        MinHeight="450px"
+        MinWidth="600px"
+        WindowState="Maximized">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Window.DataContext>
+    <ContentControl Content="{Binding CurrentPageViewModel}" />
 </Window>

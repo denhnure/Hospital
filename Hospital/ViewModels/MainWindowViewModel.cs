@@ -1,30 +1,35 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using Hospital.Models;
-using Hospital.Repositories;
+using Hospital.Commands;
 
-namespace Hospital
+namespace Hospital.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private IPageViewModel currentPageViewModel;
+
         public MainWindowViewModel()
         {
-            PatientRecords = Repository.Instance.GetPatientRecords();
-            AddNewPatientRecordCommand = new RelayCommand(AddNewPatientRecord, c => true);
+            GoToPatientRecordsCommand = new RelayCommand(GoToPatientRecords, c => true);
+            CurrentPageViewModel = new SignInViewModel(this);
         }
 
-        public ICommand AddNewPatientRecordCommand { get; private set; }
+        public ICommand GoToPatientRecordsCommand { get; private set; }
 
-        public ObservableCollection<PatientRecord> PatientRecords { get; private set; }
-
-        public void AddNewPatientRecord(object parameter)
+        public IPageViewModel CurrentPageViewModel
         {
-            AddNewPatientWindow addNewPatientWindow = new AddNewPatientWindow();
-            addNewPatientWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            addNewPatientWindow.Owner = Application.Current.MainWindow;
-            addNewPatientWindow.DataContext = new AddNewPatientRecordViewModel();
-            addNewPatientWindow.ShowDialog();
+            get { return currentPageViewModel; }
+            set
+            {
+                currentPageViewModel = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentPageViewModel)));
+            }
+        }
+
+        private void GoToPatientRecords(object parameter)
+        {
+            CurrentPageViewModel = new PatientRecordsViewModel(this);
         }
     }
 }

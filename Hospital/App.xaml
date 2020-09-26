@@ -1,9 +1,18 @@
 ﻿<Application x:Class="Hospital.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Hospital"
+             xmlns:viewModels="clr-namespace:Hospital.ViewModels"
+             xmlns:views="clr-namespace:Hospital.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type viewModels:SignInViewModel}">
+            <views:SignIn />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:PatientRecordsViewModel}">
+            <views:PatientRecords />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ReportsViewModel}">
+            <views:Reports />
+        </DataTemplate>
     </Application.Resources>
 </Application>

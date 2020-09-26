@@ -7,13 +7,22 @@ namespace Hospital.Repositories
 {
     public class SqLiteRepository : IRepository
     {
+        private const string PASSWORD = "1234";
         private const string CONNECTION_STRING = "Data Source=database.sqlite";
 
-        private ObservableCollection<PatientRecord> patientRecords = new ObservableCollection<PatientRecord>();
+        private ObservableCollection<PatientRecord> patientRecords;
+        private string password;
+
+        public bool IsLoggedIn => password == PASSWORD;
 
         public SqLiteRepository()
         {
             CreatePatientRecordTable();
+        }
+
+        public void Login(string password)
+        {
+            this.password = password;
         }
 
         public void AddPatientRecord(PatientRecord patientRecord)
@@ -44,6 +53,8 @@ namespace Hospital.Repositories
 
         public ObservableCollection<PatientRecord> GetPatientRecords()
         {
+            patientRecords = new ObservableCollection<PatientRecord>();
+
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
                 con.Open();
