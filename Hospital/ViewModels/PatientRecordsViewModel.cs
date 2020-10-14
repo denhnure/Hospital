@@ -16,7 +16,7 @@ namespace Hospital.ViewModels
             this.mainWindowViewModel = mainWindowViewModel;
 
             AddNewPatientRecordCommand = new RelayCommand(AddNewPatientRecord, c => Repository.Instance.IsLoggedIn);
-            GoToReportsCommand = new RelayCommand(GoToReports, c => true);
+            GoToReportsCommand = new RelayCommand(GoToReports);
             PatientRecords = Repository.Instance.GetPatientRecords();
         }
 

@@ -61,7 +61,8 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"SELECT * FROM [PatientRecord]
+                    command.CommandText = @"SELECT * 
+                                            FROM [PatientRecord]
                                             ORDER BY [VisitDate] DESC;";
 
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
@@ -102,6 +103,33 @@ namespace Hospital.Repositories
                                         );";
                     
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT SUM(Amount)
+                                            FROM [PatientRecord]
+                                            WHERE [PatientName] = @patientName
+                                                AND ([VisitDate] >= @fromDate OR @fromDate IS NULL) 
+                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+
+                    command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
+                    command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
+                    command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
+
+                    var result = command.ExecuteScalar();
+
+                    return result is DBNull
+                        ? null
+                        : (double?)result;
                 }
             }
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Hospital.Models;
 
 namespace Hospital.Repositories
@@ -29,6 +28,11 @@ namespace Hospital.Repositories
         public ObservableCollection<PatientRecord> GetPatientRecords()
         {
             return patientRecords;
+        }
+
+        public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        {
+            return 0;
         }
     }
 }

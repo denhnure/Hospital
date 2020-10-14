@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
+using System.Windows.Markup;
 using Hospital.Repositories;
 
 namespace Hospital
@@ -11,6 +13,20 @@ namespace Hospital
         public App()
         {
             Repository.Instance = new SqLiteRepository();
+            SetCulture();
+        }
+
+        private void SetCulture()
+        {
+            CultureInfo cultureInfo = new CultureInfo("uk-UA");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+            FrameworkElement.LanguageProperty.OverrideMetadata
+            (
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.IetfLanguageTag))
+            );
         }
     }
 }

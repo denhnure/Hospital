@@ -11,7 +11,7 @@ namespace Hospital.ViewModels
 
         public MainWindowViewModel()
         {
-            GoToPatientRecordsCommand = new RelayCommand(GoToPatientRecords, c => true);
+            GoToPatientRecordsCommand = new RelayCommand(GoToPatientRecords);
             CurrentPageViewModel = new SignInViewModel(this);
         }
 

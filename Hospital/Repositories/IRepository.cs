@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Hospital.Models;
 
 namespace Hospital.Repositories
@@ -12,5 +13,7 @@ namespace Hospital.Repositories
         void AddPatientRecord(PatientRecord patientRecord);
 
         ObservableCollection<PatientRecord> GetPatientRecords();
+
+        double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate);
     }
 }

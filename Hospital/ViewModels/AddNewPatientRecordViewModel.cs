@@ -35,7 +35,7 @@ namespace Hospital.ViewModels
                 PatientName = PatientName,
                 DoctorName = DoctorName,
                 Amount = double.Parse(Amount),
-                VisitDate = VisitDate
+                VisitDate = VisitDate.Date
             };
 
             Repository.Instance.AddPatientRecord(patientRecord);
