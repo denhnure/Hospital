@@ -63,7 +63,7 @@ namespace Hospital.ViewModels
             LoginStatus = LoginStatus.PROCESSING_LOGIN;
             Repository.Instance.Login(Password);
 
-            await Task.Delay(500);
+            await Task.Delay(750);
             
             if (!Repository.Instance.IsLoggedIn)
             {
