@@ -105,7 +105,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Reports\DateRangeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientRecords.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Reports\PatientReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,16 +146,24 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SqLiteRepository.cs" />
+    <Compile Include="ViewModels\Reports\DateRangeReportViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Enums\LoginStatus.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Reports\PatientReportViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddNewPatientWindow.xaml.cs">
       <DependentUpon>AddNewPatientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reports\DateRangeReport.xaml.cs">
+      <DependentUpon>DateRangeReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatientRecords.xaml.cs">
       <DependentUpon>PatientRecords.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\PatientReport.xaml.cs">
+      <DependentUpon>PatientReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Reports.xaml.cs">
       <DependentUpon>Reports.xaml</DependentUpon>

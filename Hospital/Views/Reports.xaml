@@ -2,66 +2,38 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:reportViewModels="clr-namespace:Hospital.ViewModels.Reports"
+      xmlns:views="clr-namespace:Hospital.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Входные данные" Padding="5px" Margin="10px">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" VerticalAlignment="Center">Имя пациента</Label>
-                <TextBox Grid.Column="1" Margin="0 5px" Text="{Binding PatientName}" VerticalAlignment="Center"></TextBox>
-
-                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">От</Label>
-                <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" SelectedDate="{Binding Path=FromDate}" />
-
-                <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">До</Label>
-                <DatePicker Grid.Row="2" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
-
-                <Button Grid.Row="3" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
-                        Command="{Binding CreatePatientReportCommand}">Посчитать</Button>
-            </Grid>
-        </GroupBox>
-        <GroupBox Grid.Column="1" Header="Результаты" Padding="5px" Margin="10px">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Label Margin="0 1px">Врач (60%):</Label>
-                <Label Grid.Column="1" VerticalAlignment="Center"
-                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=DoctorAmount}" />
-                <Label Grid.Row="1" Margin="0 4px">Клиника (40%):</Label>
-                <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
-                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=HospitalAmount}" />
-                <Label Grid.Row="2" Margin="0 4px">Итоговая сумма:</Label>
-                <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
-                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
-            </Grid>
-        </GroupBox>
-        <Button Grid.Row="1" Margin="10px 0 5px 10px" Padding="8px" HorizontalAlignment="Left" Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource=
-            {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">Главное меню</Button>
+        <TabControl Margin="10px" ItemsSource="{Binding Tabs}" SelectedIndex="0">
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type reportViewModels:PatientReportViewModel}">
+                    <views:PatientReport />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type reportViewModels:DateRangeReportViewModel}">
+                    <views:DateRangeReport />
+                </DataTemplate>
+            </TabControl.Resources>
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock
+                    Text="{Binding Header}" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding Content}" />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+        <Button Grid.Row="1" Margin="10px 0 5px 10px" Padding="8px" HorizontalAlignment="Left" IsCancel="True"
+            Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">Главное меню</Button>
     </Grid>
 </UserControl>

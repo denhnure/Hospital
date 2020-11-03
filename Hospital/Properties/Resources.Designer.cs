@@ -97,6 +97,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to За период.
+        /// </summary>
+        public static string DateRangeReport {
+            get {
+                return ResourceManager.GetString("DateRangeReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Имя доктора.
         /// </summary>
         public static string DoctorName {
@@ -120,6 +129,15 @@ namespace Hospital.Properties {
         public static string PatientName {
             get {
                 return ResourceManager.GetString("PatientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to По пациенту.
+        /// </summary>
+        public static string PatientReport {
+            get {
+                return ResourceManager.GetString("PatientReport", resourceCulture);
             }
         }
         

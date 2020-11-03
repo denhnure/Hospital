@@ -129,6 +129,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Отменить</value>
   </data>
+  <data name="DateRangeReport" xml:space="preserve">
+    <value>За период</value>
+  </data>
   <data name="DoctorName" xml:space="preserve">
     <value>Имя доктора</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="PatientName" xml:space="preserve">
     <value>Имя пациента</value>
+  </data>
+  <data name="PatientReport" xml:space="preserve">
+    <value>По пациенту</value>
   </data>
   <data name="SigInDialogTitle" xml:space="preserve">
     <value>Вход в систему</value>
