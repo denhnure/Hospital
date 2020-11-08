@@ -160,7 +160,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Главное окно.
+        ///   Looks up a localized string similar to Невромед.
         /// </summary>
         public static string Title {
             get {

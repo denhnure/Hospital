@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
+using System.IO;
 using Hospital.Models;
 
 namespace Hospital.Repositories
 {
     public class SqLiteRepository : IRepository
     {
-        private const string PASSWORD = "1234";
-        private const string CONNECTION_STRING = "Data Source=database.sqlite";
+        private const string PASSWORD = "1";
+        private readonly string CONNECTION_STRING;
 
         private ObservableCollection<PatientRecord> patientRecords;
         private string password;
@@ -17,7 +18,20 @@ namespace Hospital.Repositories
 
         public SqLiteRepository()
         {
+            CONNECTION_STRING = BuildConnectionString();
             CreatePatientRecordTable();
+        }
+        private string BuildConnectionString()
+        {
+            string commonApplicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+            string databaseFolder = $"{commonApplicationDataFolder}{Path.DirectorySeparatorChar}{Constants.APPLICATION_NAME}{Path.DirectorySeparatorChar}";
+
+            if (!Directory.Exists(databaseFolder))
+            {
+                Directory.CreateDirectory(databaseFolder);
+            }
+
+            return $"Data Source={databaseFolder}database.sqlite";
         }
 
         public void Login(string password)
@@ -36,10 +50,10 @@ namespace Hospital.Repositories
                 using (var command = new SQLiteCommand(con))
                 {
                     command.CommandText = @"INSERT INTO [PatientRecord]
-                                        (
-                                            [PatientName], [DoctorName], [Amount], [VisitDate]) 
-                                            VALUES(@patientName, @doctorName, @amount, @visitDate
-                                        );";
+                                    (
+                                        [PatientName], [DoctorName], [Amount], [VisitDate]) 
+                                        VALUES(@patientName, @doctorName, @amount, @visitDate
+                                    );";
 
                     command.Parameters.Add(new SQLiteParameter("@patientName", patientRecord.PatientName));
                     command.Parameters.Add(new SQLiteParameter("@doctorName", patientRecord.DoctorName));

@@ -6,6 +6,7 @@
         xmlns:p="clr-namespace:Hospital.Properties"
         xmlns:viewModels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
+        Icon="/images/Logo.ico"
         Title="{x:Static p:Resources.Title}"
         MinHeight="450px"
         MinWidth="600px"

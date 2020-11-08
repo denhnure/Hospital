@@ -134,6 +134,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Behaviours\PasswordBoxBehavior.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Models\PatientRecord.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -152,6 +153,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Reports\PatientReportViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
+    <Compile Include="ViewModels\Reports\SpecificDateReport.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddNewPatientWindow.xaml.cs">
       <DependentUpon>AddNewPatientWindow.xaml</DependentUpon>
@@ -210,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Spinner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

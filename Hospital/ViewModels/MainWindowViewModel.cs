@@ -12,7 +12,7 @@ namespace Hospital.ViewModels
         public MainWindowViewModel()
         {
             GoToPatientRecordsCommand = new RelayCommand(GoToPatientRecords);
-            CurrentPageViewModel = new ReportsViewModel();
+            CurrentPageViewModel = new SignInViewModel(this);
         }
 
         public ICommand GoToPatientRecordsCommand { get; private set; }
