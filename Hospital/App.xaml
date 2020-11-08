@@ -14,5 +14,6 @@
         <DataTemplate DataType="{x:Type viewModels:ReportsViewModel}">
             <views:Reports />
         </DataTemplate>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Application.Resources>
 </Application>

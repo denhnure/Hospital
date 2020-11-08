@@ -58,10 +58,10 @@ namespace Hospital.Repositories
                                         VALUES(@patientName, @doctorName, @amount, @visitDate
                                     );";
 
-                    command.Parameters.Add(new SQLiteParameter("@patientName", patientRecord.PatientName));
-                    command.Parameters.Add(new SQLiteParameter("@doctorName", patientRecord.DoctorName));
-                    command.Parameters.Add(new SQLiteParameter("@amount", patientRecord.Amount));
-                    command.Parameters.Add(new SQLiteParameter("@visitDate", patientRecord.VisitDate));
+                    command.Parameters.AddWithValue("@patientName", patientRecord.PatientName);
+                    command.Parameters.AddWithValue("@doctorName", patientRecord.DoctorName);
+                    command.Parameters.AddWithValue("@amount", patientRecord.Amount);
+                    command.Parameters.AddWithValue("@visitDate", patientRecord.VisitDate);
 
                     command.ExecuteNonQuery();
                 }

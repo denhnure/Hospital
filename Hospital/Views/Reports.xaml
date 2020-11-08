@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:reportViewModels="clr-namespace:Hospital.ViewModels.Reports"
       xmlns:views="clr-namespace:Hospital.Views"
+      xmlns:p="clr-namespace:Hospital.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -34,6 +35,11 @@
             </TabControl.ContentTemplate>
         </TabControl>
         <Button Grid.Row="1" Margin="10px 0 5px 10px" Padding="8px" HorizontalAlignment="Left" IsCancel="True"
-            Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">Главное меню</Button>
+            Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <Image VerticalAlignment="Bottom" Source="/Images/Previous.png" />
+                <Label Content="{x:Static p:Resources.MainMenu}" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

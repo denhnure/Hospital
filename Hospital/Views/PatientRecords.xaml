@@ -47,10 +47,18 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Row="1" HorizontalAlignment="Left" Margin="10px" Padding="8px" 
-                Command="{Binding GoToReportsCommand}" 
-                Content="{x:Static p:Resources.Reports}" />
+                Command="{Binding GoToReportsCommand}">
+            <StackPanel Orientation="Horizontal">
+                <Image VerticalAlignment="Bottom" Source="/Images/Report.png" />
+                <Label Content="{x:Static p:Resources.Reports}" />
+            </StackPanel>
+        </Button>
         <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="10px" Padding="8px" 
-                Command="{Binding AddNewPatientRecordCommand}" 
-                Content="{x:Static p:Resources.AddNewPatientRecord}" />
+                Command="{Binding AddNewPatientRecordCommand}">
+            <StackPanel Orientation="Horizontal">
+                <Image VerticalAlignment="Bottom" Source="/Images/Add.png" />
+                <Label Content="{x:Static p:Resources.AddNewPatientRecord}" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
