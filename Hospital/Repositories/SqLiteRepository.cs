@@ -31,7 +31,10 @@ namespace Hospital.Repositories
                 Directory.CreateDirectory(databaseFolder);
             }
 
-            return $"Data Source={databaseFolder}database.sqlite";
+            SQLiteConnectionStringBuilder connectionStringBuilder = new SQLiteConnectionStringBuilder();
+            connectionStringBuilder.DataSource = $"{databaseFolder}database.sqlite";
+
+            return connectionStringBuilder.ConnectionString;
         }
 
         public void Login(string password)
