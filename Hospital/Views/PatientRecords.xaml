@@ -46,14 +46,9 @@
                 <DataGridTextColumn Header="{x:Static p:Resources.VisitDate}" Binding="{Binding Path=VisitDate, StringFormat=dd-MM-yyyy}" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10px 0 0 0" >
-            <Hyperlink NavigateUri="ReportsPage.xaml">
-                Отчёты
-            </Hyperlink>
-        </TextBlock>
         <Button Grid.Row="1" HorizontalAlignment="Left" Margin="10px" Padding="8px" 
                 Command="{Binding GoToReportsCommand}" 
-                Content="Reports" />
+                Content="{x:Static p:Resources.Reports}" />
         <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="10px" Padding="8px" 
                 Command="{Binding AddNewPatientRecordCommand}" 
                 Content="{x:Static p:Resources.AddNewPatientRecord}" />

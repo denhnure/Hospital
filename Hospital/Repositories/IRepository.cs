@@ -14,6 +14,8 @@ namespace Hospital.Repositories
 
         ObservableCollection<PatientRecord> GetPatientRecords();
 
+        bool DoesPatientExist(string patientName);
+
         double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate);
     }
 }

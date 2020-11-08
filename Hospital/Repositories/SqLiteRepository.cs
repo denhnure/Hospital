@@ -121,6 +121,25 @@ namespace Hospital.Repositories
             }
         }
 
+        public bool DoesPatientExist(string patientName)
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT 1
+                                            FROM [PatientRecord]
+                                            WHERE [PatientName] = @patientName";
+
+                    command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
+
+                    return command.ExecuteScalar() != null;
+                }
+            }
+        }
+
         public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))

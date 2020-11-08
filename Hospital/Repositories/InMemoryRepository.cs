@@ -30,6 +30,11 @@ namespace Hospital.Repositories
             return patientRecords;
         }
 
+        public bool DoesPatientExist(string patientName)
+        {
+            return false;
+        }
+
         public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
         {
             return 0;

@@ -44,9 +44,11 @@ namespace Hospital.ViewModels
 
         public bool CanSaveNewPatientRecord(object parameter)
         {
+            double parsedAmount;
+
             return !string.IsNullOrEmpty(PatientName)
                 && !string.IsNullOrEmpty(DoctorName)
-                && !string.IsNullOrEmpty(Amount) && double.TryParse(Amount, out _);
+                && !string.IsNullOrEmpty(Amount) && double.TryParse(Amount, out parsedAmount) && parsedAmount > 0;
         }
     }
 }

@@ -45,6 +45,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label Margin="0 1px">Врач (60%):</Label>
                 <Label Grid.Column="1" VerticalAlignment="Center"
@@ -55,6 +56,9 @@
                 <Label Grid.Row="2" Margin="0 4px">Итоговая сумма:</Label>
                 <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
+
+                <Label Grid.ColumnSpan="2" Grid.Row="3" Margin="0 2px" VerticalAlignment="Center"
+                    FontWeight="Bold" Foreground="Red" Content="{Binding Path=ValidationText}" />
             </Grid>
         </GroupBox>
     </Grid>

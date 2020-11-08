@@ -142,6 +142,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отчёты.
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход в систему.
         /// </summary>
         public static string SigInDialogTitle {

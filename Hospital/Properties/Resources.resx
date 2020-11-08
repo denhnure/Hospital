@@ -144,6 +144,9 @@
   <data name="PatientReport" xml:space="preserve">
     <value>По пациенту</value>
   </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Отчёты</value>
+  </data>
   <data name="SigInDialogTitle" xml:space="preserve">
     <value>Вход в систему</value>
   </data>
