@@ -160,6 +160,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Выберите дату.
+        /// </summary>
+        public static string SelectDate {
+            get {
+                return ResourceManager.GetString("SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход в систему.
         /// </summary>
         public static string SigInDialogTitle {

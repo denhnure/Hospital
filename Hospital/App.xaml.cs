@@ -1,7 +1,12 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
+using System.Windows.Media;
 using Hospital.Repositories;
+
+using LocalizationResources = Hospital.Properties.Resources;
 
 namespace Hospital
 {
@@ -10,6 +15,8 @@ namespace Hospital
     /// </summary>
     public partial class App : Application
     {
+        private const string CULTURE_NAME = "uk-UA";
+
         public App()
         {
             Repository.Instance = new SqLiteRepository();
@@ -18,7 +25,7 @@ namespace Hospital
 
         private void SetCulture()
         {
-            CultureInfo cultureInfo = new CultureInfo("uk-UA");
+            CultureInfo cultureInfo = new CultureInfo(CULTURE_NAME);
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
@@ -27,6 +34,45 @@ namespace Hospital
                 typeof(FrameworkElement),
                 new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentUICulture.IetfLanguageTag))
             );
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            EventManager.RegisterClassHandler(typeof(DatePicker), FrameworkElement.LoadedEvent, new RoutedEventHandler(DatePicker_Loaded));
+        }
+
+        private void DatePicker_Loaded(object sender, RoutedEventArgs e)
+        {
+            var datePicker = sender as DatePicker;
+            var datePickerTextBox = GetChildOfType<DatePickerTextBox>(datePicker);
+            var datePickerWatermark = datePickerTextBox?.Template.FindName("PART_Watermark", datePickerTextBox) as ContentControl;
+            
+            if (datePickerWatermark != null)
+            {
+                datePickerWatermark.Content = LocalizationResources.SelectDate;
+            }
+        }
+
+        private static T GetChildOfType<T>(DependencyObject dependencyObject) where T : DependencyObject
+        {
+            if (dependencyObject == null)
+            { 
+                return null;
+            }
+
+            for (int index = 0; index < VisualTreeHelper.GetChildrenCount(dependencyObject); index++)
+            {
+                var child = VisualTreeHelper.GetChild(dependencyObject, index);
+                var result = (child as T) ?? GetChildOfType<T>(child);
+                
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return null;
         }
     }
 }
