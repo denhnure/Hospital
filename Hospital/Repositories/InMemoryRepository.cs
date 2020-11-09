@@ -35,7 +35,17 @@ namespace Hospital.Repositories
             return false;
         }
 
-        public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        public double? GetPatientAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        {
+            return 0;
+        }
+
+        public int GetPatientCount(DateTime? fromDate, DateTime? toDate)
+        {
+            return 0;
+        }
+
+        public double? GetAmount(DateTime? fromDate, DateTime? toDate)
         {
             return 0;
         }

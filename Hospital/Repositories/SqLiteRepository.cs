@@ -143,7 +143,7 @@ namespace Hospital.Repositories
             }
         }
 
-        public double? GetAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        public double? GetPatientAmount(string patientName, DateTime? fromDate, DateTime? toDate)
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
@@ -158,6 +158,52 @@ namespace Hospital.Repositories
                                                 AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
 
                     command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
+                    command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
+                    command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
+
+                    var result = command.ExecuteScalar();
+
+                    return result is DBNull
+                        ? null
+                        : (double?)result;
+                }
+            }
+        }
+
+        public int GetPatientCount(DateTime? fromDate, DateTime? toDate)
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT COUNT(*)
+                                            FROM [PatientRecord]
+                                            WHERE ([VisitDate] >= @fromDate OR @fromDate IS NULL)
+                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+
+                    command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
+                    command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
+
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public double? GetAmount(DateTime? fromDate, DateTime? toDate)
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT SUM(Amount)
+                                            FROM [PatientRecord]
+                                            WHERE ([VisitDate] >= @fromDate OR @fromDate IS NULL)
+                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
 

@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Behaviours\PasswordBoxBehavior.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Helpers\DateRangeValidator.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Models\PatientRecord.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -196,6 +196,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ошибка: {0}!.
+        /// </summary>
+        public static string ValidationErrorTemplate {
+            get {
+                return ResourceManager.GetString("ValidationErrorTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата визита.
         /// </summary>
         public static string VisitDate {

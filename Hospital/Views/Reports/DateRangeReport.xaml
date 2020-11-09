@@ -6,5 +6,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Входные данные" Padding="5px" Margin="10px">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label HorizontalAlignment="Right" VerticalAlignment="Center">От</Label>
+                <DatePicker Grid.Column="1" Margin="0 5px" SelectedDate="{Binding Path=FromDate}" />
+
+                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">До</Label>
+                <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
+
+                <Button Grid.Row="2" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Command="{Binding CreateDateRangeReportCommand}">Посчитать</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Результаты" Padding="5px" Margin="10px">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Margin="0 1px">Количество пациентов:</Label>
+                <Label Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Content="{Binding Path=PatientCount}" />
+                <Label Grid.Row="1" Margin="0 1px">Врач (60%):</Label>
+                <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
+                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=DoctorAmount}" />
+                <Label Grid.Row="2" Margin="0 4px">Клиника (40%):</Label>
+                <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=HospitalAmount}" />
+                <Label Grid.Row="3" Margin="0 4px">Итоговая сумма:</Label>
+                <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
+                    ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
+
+                <Label Grid.ColumnSpan="2" Grid.Row="4" Margin="0 2px" VerticalAlignment="Center"
+                    FontWeight="Bold" Foreground="Red" Content="{Binding Path=ValidationText}" />
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

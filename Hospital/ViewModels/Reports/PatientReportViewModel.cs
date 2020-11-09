@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Hospital.Commands;
+using Hospital.Helpers;
+using Hospital.Properties;
 using Hospital.Repositories;
 
 namespace Hospital.ViewModels.Reports
 {
     public class PatientReportViewModel : IPageViewModel, INotifyPropertyChanged
     {
-        private const string VALIDATION_ERROR_TEMPLATE = "Ошибка: {0}!";
-
         public event PropertyChangedEventHandler PropertyChanged;
         private double? amount;
         private string validationText;
@@ -25,9 +25,9 @@ namespace Hospital.ViewModels.Reports
 
         public DateTime? ToDate { get; set; }
 
-        public double? DoctorAmount => Amount * 0.6;
+        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT;
 
-        public double? HospitalAmount => Amount * 0.4;
+        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT;
 
         public double? Amount
         {
@@ -60,27 +60,29 @@ namespace Hospital.ViewModels.Reports
 
             if (string.IsNullOrEmpty(PatientName))
             {
-                ValidationText = string.Format(VALIDATION_ERROR_TEMPLATE, "введите имя пациента");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, "введите имя пациента");
                 return;
             }
 
             if (!Repository.Instance.DoesPatientExist(PatientName))
             {
-                ValidationText = string.Format(VALIDATION_ERROR_TEMPLATE, "данного пациента в системе не обнаружено");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, "данного пациента в системе не обнаружено");
                 return;
             }
 
-            if (FromDate > ToDate)
+            string dateRangeValidation = DateRangeValidator.Validate(FromDate, ToDate);
+
+            if (!string.IsNullOrEmpty(dateRangeValidation))
             {
-                ValidationText = string.Format(VALIDATION_ERROR_TEMPLATE, "неверный диапазон дат. Начальная дата не может быть позже конечной");
+                ValidationText = dateRangeValidation;
                 return;
             }
 
-            double? amount = Repository.Instance.GetAmount(PatientName, FromDate, ToDate);
+            double? amount = Repository.Instance.GetPatientAmount(PatientName, FromDate, ToDate);
 
             if(amount == null)
             {
-                ValidationText = string.Format(VALIDATION_ERROR_TEMPLATE, "данный пациент не был в клинике в указанный период");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, "данный пациент не был в клинике в указанный период");
                 return;
             }
 

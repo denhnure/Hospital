@@ -6,6 +6,7 @@
         xmlns:p="clr-namespace:Hospital.Properties"
         x:Name="AddNewPatientWindowName"
         mc:Ignorable="d"
+        Icon="/Images/Logo.ico"
         Title="{x:Static p:Resources.AddNewPatientRecord}" Height="360" Width="600">
     <Window.Resources>
         <Style TargetType="Label">
