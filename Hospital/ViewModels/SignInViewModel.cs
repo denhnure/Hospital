@@ -20,8 +20,6 @@ namespace Hospital.ViewModels
 
         public bool IsNotLoggedIn => LoginStatus == LoginStatus.NOT_LOGGED_IN;
 
-        public bool IsProcessingLogin => LoginStatus == LoginStatus.PROCESSING_LOGIN;
-
         public bool WrongCredentials => LoginStatus == LoginStatus.WRONG_CREDENTIALS;
 
         public string Password
@@ -45,7 +43,6 @@ namespace Hospital.ViewModels
             {
                 loginStatus = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsNotLoggedIn)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsProcessingLogin)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(WrongCredentials)));
             }
         }
@@ -60,13 +57,10 @@ namespace Hospital.ViewModels
             TryLoginAgainCommand = new RelayCommand(TryLoginAgain, _ => true);
         }
 
-        public async void SignIn(object parameter)
+        public void SignIn(object parameter)
         {
-            LoginStatus = LoginStatus.PROCESSING_LOGIN;
             Repository.Instance.Login(Password);
 
-            await Task.Delay(LOGIN_DELAY_IN_MILLISECONDS);
-            
             if (!Repository.Instance.IsLoggedIn)
             {
                 LoginStatus = LoginStatus.WRONG_CREDENTIALS;

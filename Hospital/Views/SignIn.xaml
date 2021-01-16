@@ -87,23 +87,6 @@
                 Command="{Binding SignInCommand}" 
                 CommandParameter="{Binding ElementName=passwordBox}" />
         </Grid>
-        <Image Grid.Row="1" Grid.Column="1" Visibility="{Binding Path=IsProcessingLogin, Converter={StaticResource BooleanToVisibilityConverter}}"
-               Source="/images/spinner.png" Width="54" Height="54" RenderTransformOrigin="0.5, 0.5">
-            <Image.RenderTransform>
-                <RotateTransform x:Name="noFreeze" />
-            </Image.RenderTransform>
-            <Image.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                        Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
-                        To="360" Duration="0:0:1" RepeatBehavior="Forever" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Image.Triggers>
-        </Image>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Label HorizontalAlignment="Center" Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}" 
                 FontSize="14px"
