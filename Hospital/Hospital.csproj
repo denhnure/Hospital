@@ -152,6 +152,8 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SqLiteRepository.cs" />
+    <Compile Include="ValueConverters\BooleanConverter.cs" />
+    <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\Reports\DateRangeReportViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Enums\LoginStatus.cs" />
