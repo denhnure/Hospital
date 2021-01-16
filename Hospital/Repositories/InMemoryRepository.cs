@@ -25,7 +25,7 @@ namespace Hospital.Repositories
             patientRecords.Insert(0, patientRecord);
         }
 
-        public ObservableCollection<PatientRecord> GetPatientRecords()
+        public ObservableCollection<PatientRecord> GetPatientRecords(DateTime? date = null)
         {
             return patientRecords;
         }

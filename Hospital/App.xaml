@@ -15,5 +15,8 @@
             <views:Reports />
         </DataTemplate>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="Grid">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
     </Application.Resources>
 </Application>

@@ -68,7 +68,7 @@ namespace Hospital.Repositories
             }
         }
 
-        public ObservableCollection<PatientRecord> GetPatientRecords()
+        public ObservableCollection<PatientRecord> GetPatientRecords(DateTime? date = null)
         {
             patientRecords = new ObservableCollection<PatientRecord>();
 
@@ -78,9 +78,12 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"SELECT * 
+                    command.CommandText = @"SELECT *
                                             FROM [PatientRecord]
-                                            ORDER BY [VisitDate] DESC;";
+                                            WHERE [VisitDate] == @date OR @date IS NULL
+                                            ORDER BY [VisitDate] DESC";
+
+                    command.Parameters.Add(new SQLiteParameter("@date", date));
 
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
 

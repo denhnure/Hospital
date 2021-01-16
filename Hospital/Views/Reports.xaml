@@ -21,6 +21,9 @@
                 <DataTemplate DataType="{x:Type reportViewModels:DateRangeReportViewModel}">
                     <views:DateRangeReport />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type reportViewModels:SpecificDateReportViewModel}">
+                    <views:SpecificDateReport />
+                </DataTemplate>
             </TabControl.Resources>
             <TabControl.ItemTemplate>
                 <DataTemplate>

@@ -13,7 +13,8 @@ namespace Hospital.ViewModels
             Tabs = new List<object>
             {
                 new { Header = Resources.PatientReport, Content = new PatientReportViewModel() },
-                new { Header = Resources.DateRangeReport, Content = new DateRangeReportViewModel() }
+                new { Header = Resources.DateRangeReport, Content = new DateRangeReportViewModel() },
+                new { Header = Resources.SpecificDateReport, Content = new SpecificDateReportViewModel() }
             };
         }
     }

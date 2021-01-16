@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Hospital.Views.SpecificDateReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mainNamespace="clr-namespace:Hospital"
+             xmlns:p="clr-namespace:Hospital.Properties"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10px 15px 10px 10px">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <DatePicker Width="250px" SelectedDate="{Binding Path=Date}" />
+            <Button Margin="15px 0 0 0" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
+            Command="{Binding CreateSpecificDateReportCommand}" Content="{x:Static p:Resources.Calculate}" />
+        </StackPanel>
+
+        <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 25px 0 0" FontSize="16px" ItemsSource="{Binding Path=PatientRecords}"
+            ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
+                <DataGridTextColumn Header="{x:Static mainNamespace:Constants.DOCTOR_AMOUNT_TEXT}" Binding="{Binding Path=DoctorAmount}" />
+                <DataGridTextColumn Header="{x:Static mainNamespace:Constants.HOSPITAL_AMOUNT_TEXT}" Binding="{Binding Path=HospitalAmount}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=Amount}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

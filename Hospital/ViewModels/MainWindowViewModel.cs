@@ -29,7 +29,7 @@ namespace Hospital.ViewModels
 
         private void GoToPatientRecords(object parameter)
         {
-            CurrentPageViewModel = new PatientRecordsViewModel(this);
+            CurrentPageViewModel = new SignInViewModel(this);
         }
     }
 }

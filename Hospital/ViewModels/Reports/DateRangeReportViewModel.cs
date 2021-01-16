@@ -34,9 +34,9 @@ namespace Hospital.ViewModels.Reports
             }
         }
 
-        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT;
+        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT_FACTOR;
 
-        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT;
+        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT_FACTOR;
 
         public double? Amount
         {

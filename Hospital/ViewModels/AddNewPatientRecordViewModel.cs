@@ -25,7 +25,7 @@ namespace Hospital.ViewModels
         {
             VisitDate = DateTime.Now;
             SaveNewPatientRecordCommand = new RelayCommand(SaveNewPatientRecord, CanSaveNewPatientRecord);
-            CancelNewPatientRecordCommand = new RelayCommand(window => WindowHelper.CloseCurrentWindow(window), _ => true);
+            CancelNewPatientRecordCommand = new RelayCommand(window => WindowHelper.CloseCurrentWindow(window));
         }
 
         public void SaveNewPatientRecord(object parameter)
@@ -48,7 +48,8 @@ namespace Hospital.ViewModels
 
             return !string.IsNullOrEmpty(PatientName)
                 && !string.IsNullOrEmpty(DoctorName)
-                && !string.IsNullOrEmpty(Amount) && double.TryParse(Amount, out parsedAmount) && parsedAmount > 0;
+                && !string.IsNullOrEmpty(Amount) && double.TryParse(Amount, out parsedAmount) && parsedAmount > 0
+                && VisitDate.Date <= DateTime.Today;
         }
     }
 }

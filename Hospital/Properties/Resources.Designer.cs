@@ -61,7 +61,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добавить.
+        ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Add {
             get {
@@ -70,7 +70,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добавить новую запись о пациенте.
+        ///   Looks up a localized string similar to Add a new patient record.
         /// </summary>
         public static string AddNewPatientRecord {
             get {
@@ -79,7 +79,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма.
+        ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string Amount {
             get {
@@ -88,7 +88,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отменить.
+        ///   Looks up a localized string similar to Calculate.
+        /// </summary>
+        public static string Calculate {
+            get {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
@@ -97,7 +106,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to За период.
+        ///   Looks up a localized string similar to Date range report.
         /// </summary>
         public static string DateRangeReport {
             get {
@@ -106,7 +115,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Имя доктора.
+        ///   Looks up a localized string similar to Doctor ({0}%):.
+        /// </summary>
+        public static string DoctorAmount {
+            get {
+                return ResourceManager.GetString("DoctorAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctor name.
         /// </summary>
         public static string DoctorName {
             get {
@@ -115,7 +133,25 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Главное меню.
+        ///   Looks up a localized string similar to Hospital ({0}%):.
+        /// </summary>
+        public static string HospitalAmount {
+            get {
+                return ResourceManager.GetString("HospitalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input data.
+        /// </summary>
+        public static string InputData {
+            get {
+                return ResourceManager.GetString("InputData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main menu.
         /// </summary>
         public static string MainMenu {
             get {
@@ -124,7 +160,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пароль.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
@@ -133,7 +169,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Имя пациента.
+        ///   Looks up a localized string similar to Patient name.
         /// </summary>
         public static string PatientName {
             get {
@@ -142,7 +178,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to По пациенту.
+        ///   Looks up a localized string similar to Patient report.
         /// </summary>
         public static string PatientReport {
             get {
@@ -151,7 +187,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отчёты.
+        ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string Reports {
             get {
@@ -160,7 +196,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Выберите дату.
+        ///   Looks up a localized string similar to Results.
+        /// </summary>
+        public static string Results {
+            get {
+                return ResourceManager.GetString("Results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a date.
         /// </summary>
         public static string SelectDate {
             get {
@@ -187,7 +232,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Невромед.
+        ///   Looks up a localized string similar to Specific date report.
+        /// </summary>
+        public static string SpecificDateReport {
+            get {
+                return ResourceManager.GetString("SpecificDateReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nevromed.
         /// </summary>
         public static string Title {
             get {
@@ -205,7 +259,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дата визита.
+        ///   Looks up a localized string similar to Visit date.
         /// </summary>
         public static string VisitDate {
             get {

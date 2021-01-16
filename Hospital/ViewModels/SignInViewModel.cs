@@ -10,6 +10,8 @@ namespace Hospital.ViewModels
 {
     public class SignInViewModel : IPageViewModel, INotifyPropertyChanged
     {
+        private const int LOGIN_DELAY_IN_MILLISECONDS = 1000;
+
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler PasswordReset;
         private readonly MainWindowViewModel mainWindowViewModel;
@@ -63,7 +65,7 @@ namespace Hospital.ViewModels
             LoginStatus = LoginStatus.PROCESSING_LOGIN;
             Repository.Instance.Login(Password);
 
-            await Task.Delay(850);
+            await Task.Delay(LOGIN_DELAY_IN_MILLISECONDS);
             
             if (!Repository.Instance.IsLoggedIn)
             {

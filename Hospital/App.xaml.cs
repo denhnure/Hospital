@@ -1,9 +1,11 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
 using System.Windows.Media;
+using Hospital.Models;
 using Hospital.Repositories;
 
 using LocalizationResources = Hospital.Properties.Resources;
@@ -20,7 +22,23 @@ namespace Hospital
         public App()
         {
             Repository.Instance = new SqLiteRepository();
+            //AddPatientRecords(1000);
             SetCulture();
+        }
+
+        //TODO: for load & performance tests
+        private static void AddPatientRecords(int amount)
+        {
+            for (int index = 1; index <= amount; ++index)
+            {
+                Repository.Instance.AddPatientRecord(new PatientRecord
+                {
+                    PatientName = index.ToString(),
+                    DoctorName = index.ToString(),
+                    Amount = index,
+                    VisitDate = DateTime.Today
+                });
+            }
         }
 
         private void SetCulture()

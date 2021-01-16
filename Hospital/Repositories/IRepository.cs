@@ -12,7 +12,7 @@ namespace Hospital.Repositories
         
         void AddPatientRecord(PatientRecord patientRecord);
 
-        ObservableCollection<PatientRecord> GetPatientRecords();
+        ObservableCollection<PatientRecord> GetPatientRecords(DateTime? date = null);
 
         bool DoesPatientExist(string patientName);
 

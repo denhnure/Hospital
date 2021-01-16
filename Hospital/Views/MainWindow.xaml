@@ -14,5 +14,8 @@
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
     </Window.DataContext>
+    <Window.Background>
+        <SolidColorBrush Color="#336096"/>
+    </Window.Background>
     <ContentControl Content="{Binding CurrentPageViewModel}" />
 </Window>

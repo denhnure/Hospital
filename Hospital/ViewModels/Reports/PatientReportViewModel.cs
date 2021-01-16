@@ -16,7 +16,7 @@ namespace Hospital.ViewModels.Reports
 
         public PatientReportViewModel()
         {
-            CreatePatientReportCommand = new RelayCommand(CreatePatientReport);
+            CreatePatientReportCommand = new RelayCommand(CreatePatientReport, _ => !string.IsNullOrEmpty(PatientName));
         }
 
         public string PatientName { get; set; }
@@ -25,9 +25,9 @@ namespace Hospital.ViewModels.Reports
 
         public DateTime? ToDate { get; set; }
 
-        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT;
+        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT_FACTOR;
 
-        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT;
+        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT_FACTOR;
 
         public double? Amount
         {
@@ -57,12 +57,6 @@ namespace Hospital.ViewModels.Reports
         {
             Amount = null;
             ValidationText = null;
-
-            if (string.IsNullOrEmpty(PatientName))
-            {
-                ValidationText = string.Format(Resources.ValidationErrorTemplate, "введите имя пациента");
-                return;
-            }
 
             if (!Repository.Instance.DoesPatientExist(PatientName))
             {

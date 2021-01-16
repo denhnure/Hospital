@@ -53,7 +53,7 @@
             </Grid.RowDefinitions>
             <Viewbox Grid.Row="1" Margin="5" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Border BorderBrush="White" Padding="0 0 15 0" BorderThickness="10" CornerRadius="10">
-                    <Label FontFamily="Monotype Corsiva" FontSize="120px" Content="НЕВРОМЕД" />
+                    <Label FontFamily="Monotype Corsiva" FontSize="120px" Content="NEVROMED" />
                 </Border> 
             </Viewbox>
         </Grid>
@@ -107,7 +107,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Label HorizontalAlignment="Center" Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}" 
                 FontSize="14px"
-                Content="Неверный пароль. Попробуйте ещё раз." />
+                Content="Wrond credentials. Try one more time." />
             <Button Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}"
                 Margin="8px"
                 HorizontalAlignment="Center"

@@ -118,40 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Добавить</value>
+    <value>Add</value>
   </data>
   <data name="AddNewPatientRecord" xml:space="preserve">
-    <value>Добавить новую запись о пациенте</value>
+    <value>Add a new patient record</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Сумма</value>
+    <value>Amount</value>
+  </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Отменить</value>
+    <value>Cancel</value>
   </data>
   <data name="DateRangeReport" xml:space="preserve">
-    <value>За период</value>
+    <value>Date range report</value>
+  </data>
+  <data name="DoctorAmount" xml:space="preserve">
+    <value>Doctor ({0}%):</value>
   </data>
   <data name="DoctorName" xml:space="preserve">
-    <value>Имя доктора</value>
+    <value>Doctor name</value>
+  </data>
+  <data name="HospitalAmount" xml:space="preserve">
+    <value>Hospital ({0}%):</value>
+  </data>
+  <data name="InputData" xml:space="preserve">
+    <value>Input data</value>
   </data>
   <data name="MainMenu" xml:space="preserve">
-    <value>Главное меню</value>
+    <value>Main menu</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+    <value>Password</value>
   </data>
   <data name="PatientName" xml:space="preserve">
-    <value>Имя пациента</value>
+    <value>Patient name</value>
   </data>
   <data name="PatientReport" xml:space="preserve">
-    <value>По пациенту</value>
+    <value>Patient report</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Отчёты</value>
+    <value>Reports</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
   </data>
   <data name="SelectDate" xml:space="preserve">
-    <value>Выберите дату</value>
+    <value>Select a date</value>
   </data>
   <data name="SigInDialogTitle" xml:space="preserve">
     <value>Вход в систему</value>
@@ -159,13 +174,16 @@
   <data name="SignIn" xml:space="preserve">
     <value>Вход</value>
   </data>
+  <data name="SpecificDateReport" xml:space="preserve">
+    <value>Specific date report</value>
+  </data>
   <data name="Title" xml:space="preserve">
-    <value>Невромед</value>
+    <value>Nevromed</value>
   </data>
   <data name="ValidationErrorTemplate" xml:space="preserve">
     <value>Ошибка: {0}!</value>
   </data>
   <data name="VisitDate" xml:space="preserve">
-    <value>Дата визита</value>
+    <value>Visit date</value>
   </data>
 </root>

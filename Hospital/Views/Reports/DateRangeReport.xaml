@@ -1,16 +1,17 @@
 ﻿<UserControl x:Class="Hospital.Views.DateRangeReport"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:p="clr-namespace:Hospital.Properties"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Входные данные" Padding="5px" Margin="10px">
+        <GroupBox Header="{x:Static p:Resources.InputData}" Padding="5px" Margin="10px">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -22,17 +23,17 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Label HorizontalAlignment="Right" VerticalAlignment="Center">От</Label>
+                <Label HorizontalAlignment="Right" VerticalAlignment="Center">From</Label>
                 <DatePicker Grid.Column="1" Margin="0 5px" SelectedDate="{Binding Path=FromDate}" />
 
-                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">До</Label>
+                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">To</Label>
                 <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
 
                 <Button Grid.Row="2" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
-                    Command="{Binding CreateDateRangeReportCommand}">Посчитать</Button>
+                    Command="{Binding CreateDateRangeReportCommand}" Content="{x:Static p:Resources.Calculate}" />
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Результаты" Padding="5px" Margin="10px">
+        <GroupBox Grid.Column="1" Header="{x:Static p:Resources.Results}" Padding="5px" Margin="10px">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -45,15 +46,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Label Margin="0 1px">Количество пациентов:</Label>
+                <Label Margin="0 1px">Number of patients:</Label>
                 <Label Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Content="{Binding Path=PatientCount}" />
-                <Label Grid.Row="1" Margin="0 1px">Врач (60%):</Label>
+                <Label Grid.Row="1" Margin="0 1px">Doctor (60%):</Label>
                 <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=DoctorAmount}" />
-                <Label Grid.Row="2" Margin="0 4px">Клиника (40%):</Label>
+                <Label Grid.Row="2" Margin="0 4px">Hospital (40%):</Label>
                 <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=HospitalAmount}" />
-                <Label Grid.Row="3" Margin="0 4px">Итоговая сумма:</Label>
+                <Label Grid.Row="3" Margin="0 4px">Amount:</Label>
                 <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
 
