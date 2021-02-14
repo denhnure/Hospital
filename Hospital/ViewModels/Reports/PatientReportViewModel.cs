@@ -8,7 +8,7 @@ using Hospital.Repositories;
 
 namespace Hospital.ViewModels.Reports
 {
-    public class PatientReportViewModel : IPageViewModel, INotifyPropertyChanged
+    public class PatientReportViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private double? amount;

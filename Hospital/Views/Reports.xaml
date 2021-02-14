@@ -37,7 +37,7 @@
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
-        <Button Grid.Row="1" Margin="10px 0 5px 10px" Padding="8px" HorizontalAlignment="Left" IsCancel="True"
+        <Button Grid.Row="1" Margin="10px 0 5px 10px" Padding="8px" HorizontalAlignment="Left"
             Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">
             <StackPanel Orientation="Horizontal">
                 <Image VerticalAlignment="Bottom" Source="/Images/Previous.png" />

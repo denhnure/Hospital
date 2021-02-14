@@ -129,9 +129,6 @@
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="DateRangeReport" xml:space="preserve">
     <value>Date range report</value>
   </data>
@@ -140,6 +137,9 @@
   </data>
   <data name="DoctorName" xml:space="preserve">
     <value>Doctor name</value>
+  </data>
+  <data name="EditLastPatientRecord" xml:space="preserve">
+    <value>Edit the last patient record</value>
   </data>
   <data name="HospitalAmount" xml:space="preserve">
     <value>Hospital ({0}%):</value>
@@ -176,9 +176,6 @@
   </data>
   <data name="SpecificDateReport" xml:space="preserve">
     <value>Specific date report</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Nevromed</value>
   </data>
   <data name="ValidationErrorTemplate" xml:space="preserve">
     <value>Ошибка: {0}!</value>

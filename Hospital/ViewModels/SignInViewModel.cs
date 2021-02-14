@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Hospital.Commands;
 using Hospital.Enums;
 using Hospital.Repositories;
+using Hospital.ViewModels.PatientRecords;
 
 namespace Hospital.ViewModels
 {
@@ -17,6 +17,8 @@ namespace Hospital.ViewModels
         private readonly MainWindowViewModel mainWindowViewModel;
         private LoginStatus loginStatus;
         private string password;
+
+        public string Title => "SignIn";
 
         public bool IsNotLoggedIn => LoginStatus == LoginStatus.NOT_LOGGED_IN;
 

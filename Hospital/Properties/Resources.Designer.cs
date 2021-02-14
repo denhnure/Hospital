@@ -97,15 +97,6 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string Cancel {
-            get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Date range report.
         /// </summary>
         public static string DateRangeReport {
@@ -129,6 +120,15 @@ namespace Hospital.Properties {
         public static string DoctorName {
             get {
                 return ResourceManager.GetString("DoctorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit the last patient record.
+        /// </summary>
+        public static string EditLastPatientRecord {
+            get {
+                return ResourceManager.GetString("EditLastPatientRecord", resourceCulture);
             }
         }
         
@@ -237,15 +237,6 @@ namespace Hospital.Properties {
         public static string SpecificDateReport {
             get {
                 return ResourceManager.GetString("SpecificDateReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nevromed.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

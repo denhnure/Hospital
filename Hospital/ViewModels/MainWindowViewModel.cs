@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 using Hospital.Commands;
+using Hospital.ViewModels.PatientRecords;
 
 namespace Hospital.ViewModels
 {

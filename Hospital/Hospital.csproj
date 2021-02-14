@@ -101,7 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\AddNewPatientWindow.xaml">
+    <Page Include="Views\AddEditPatientRecord.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,7 +140,6 @@
     <Compile Include="Behaviours\PasswordBoxBehavior.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Helpers\DateRangeValidator.cs" />
-    <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Models\PatientRecord.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
@@ -148,12 +147,14 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Repositories\InMemoryRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SqLiteRepository.cs" />
     <Compile Include="ValueConverters\BooleanConverter.cs" />
     <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\PatientRecords\BasePatientRecordViewModel.cs" />
+    <Compile Include="ViewModels\PatientRecords\AddPatientRecordViewModel.cs" />
+    <Compile Include="ViewModels\PatientRecords\EditLastPatientRecordViewModel.cs" />
     <Compile Include="ViewModels\Reports\DateRangeReportViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Enums\LoginStatus.cs" />
@@ -162,8 +163,8 @@
     <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\SpecificDateReportViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
-    <Compile Include="Views\AddNewPatientWindow.xaml.cs">
-      <DependentUpon>AddNewPatientWindow.xaml</DependentUpon>
+    <Compile Include="Views\AddEditPatientRecord.xaml.cs">
+      <DependentUpon>AddEditPatientRecord.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Reports\DateRangeReport.xaml.cs">
       <DependentUpon>DateRangeReport.xaml</DependentUpon>
@@ -189,8 +190,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\AddNewPatientRecordViewModel.cs" />
-    <Compile Include="ViewModels\PatientRecordsViewModel.cs" />
+    <Compile Include="ViewModels\PatientRecords\PatientRecordsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -234,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net45\System.Data.SQLite.Core.targets')" />

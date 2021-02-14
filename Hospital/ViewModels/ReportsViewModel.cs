@@ -6,6 +6,8 @@ namespace Hospital.ViewModels
 {
     public class ReportsViewModel : IPageViewModel
     {
+        public string Title => "Reports";
+
         public List<object> Tabs { get; private set; }
 
         public ReportsViewModel()

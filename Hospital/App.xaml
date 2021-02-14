@@ -3,14 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:valueConverters="clr-namespace:Hospital.ValueConverters"
              xmlns:viewModels="clr-namespace:Hospital.ViewModels"
+             xmlns:patientRecordsViewModels="clr-namespace:Hospital.ViewModels.PatientRecords"
              xmlns:views="clr-namespace:Hospital.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type viewModels:SignInViewModel}">
             <views:SignIn />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:PatientRecordsViewModel}">
+        <DataTemplate DataType="{x:Type patientRecordsViewModels:PatientRecordsViewModel}">
             <views:PatientRecords />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type patientRecordsViewModels:AddPatientRecordViewModel}">
+            <views:AddEditPatientRecord />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type patientRecordsViewModels:EditLastPatientRecordViewModel}">
+            <views:AddEditPatientRecord />
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModels:ReportsViewModel}">
             <views:Reports />

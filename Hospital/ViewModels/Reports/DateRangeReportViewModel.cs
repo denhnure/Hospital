@@ -8,7 +8,7 @@ using Hospital.Repositories;
 
 namespace Hospital.ViewModels.Reports
 {
-    public class DateRangeReportViewModel : IPageViewModel, INotifyPropertyChanged
+    public class DateRangeReportViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int? patientCount;

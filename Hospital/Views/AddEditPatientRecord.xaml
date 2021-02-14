@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Hospital.Views.AddEditPatientRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Hospital.Properties"
+        mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0 5px 0 5px" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="25px" />
+            <Setter Property="MaxLines" Value="1" />
+            <Setter Property="Margin" Value="0 5px 5px 5px" />
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Height" Value="25px" />
+            <Setter Property="Margin" Value="0 5px 5px 5px" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Background="White" Margin="10px 10px 10px 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Margin="5px 15px 0 0" Content="{x:Static p:Resources.PatientName}" />
+            <TextBox Margin="0 15px 5px 5px" Grid.Column="1" Text="{Binding Path=PatientName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Grid.Row="1" Content="{x:Static p:Resources.DoctorName}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=DoctorName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Grid.Row="2" Content="{x:Static p:Resources.Amount}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+            <Label Grid.Row="3" Content="{x:Static p:Resources.VisitDate}" />
+            <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding Path=VisitDate}"></DatePicker>
+            <Button Grid.Column="1" Grid.Row="4" MinWidth="100px" Height="30px" HorizontalAlignment="Right" Margin="5px"
+            Command="{Binding SavePatientRecordCommand}" Content="{x:Static p:Resources.Add}" />
+        </Grid>
+        <Button Grid.Row="1" Margin="10px 10px 0 10px" Padding="8px" HorizontalAlignment="Left"
+                Command="{Binding DataContext.GoToPatientRecordsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <Image VerticalAlignment="Bottom" Source="/Images/Previous.png" />
+                <Label Margin="0" Content="{x:Static p:Resources.MainMenu}" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

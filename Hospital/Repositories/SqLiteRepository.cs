@@ -106,6 +106,53 @@ namespace Hospital.Repositories
             return patientRecords;
         }
 
+        public PatientRecord GetLastPatientRecord()
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT * FROM [PatientRecord] 
+                                            WHERE rowid = (SELECT MAX(rowid) FROM [PatientRecord])";
+
+                    SQLiteDataReader sqlDataReader = command.ExecuteReader();
+                    sqlDataReader.Read();
+
+                    return new PatientRecord
+                    {
+                        PatientName = (string)sqlDataReader["PatientName"],
+                        DoctorName = (string)sqlDataReader["DoctorName"],
+                        Amount = (double)sqlDataReader["Amount"],
+                        VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
+                    };
+                }
+            }
+        }
+
+        public void UpdateLastPatientRecord(PatientRecord patientRecord)
+        {
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"UPDATE [PatientRecord] 
+                                            SET [PatientName] = @patientName, [DoctorName] = @doctorName, [Amount] = @amount, [VisitDate] = @visitDate
+                                            WHERE rowid = (SELECT MAX(rowid) FROM [PatientRecord])";
+
+                    command.Parameters.AddWithValue("@patientName", patientRecord.PatientName);
+                    command.Parameters.AddWithValue("@doctorName", patientRecord.DoctorName);
+                    command.Parameters.AddWithValue("@amount", patientRecord.Amount);
+                    command.Parameters.AddWithValue("@visitDate", patientRecord.VisitDate);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         private void CreatePatientRecordTable()
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))

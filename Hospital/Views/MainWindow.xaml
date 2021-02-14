@@ -3,11 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:p="clr-namespace:Hospital.Properties"
         xmlns:viewModels="clr-namespace:Hospital.ViewModels"
         mc:Ignorable="d"
         Icon="/images/Logo.ico"
-        Title="{x:Static p:Resources.Title}"
+        Title="{Binding CurrentPageViewModel.Title}"
         MinHeight="450px"
         MinWidth="600px"
         WindowState="Maximized">

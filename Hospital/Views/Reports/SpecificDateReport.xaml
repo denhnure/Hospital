@@ -19,7 +19,7 @@
             Command="{Binding CreateSpecificDateReportCommand}" Content="{x:Static p:Resources.Calculate}" />
         </StackPanel>
 
-        <DataGrid x:Name="dataGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 25px 0 0" FontSize="16px" ItemsSource="{Binding Path=PatientRecords}"
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Margin="0 25px 0 0" FontSize="16px" ItemsSource="{Binding Path=PatientRecords}"
             ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
             IsReadOnly="True">
             <DataGrid.Columns>

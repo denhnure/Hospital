@@ -22,13 +22,15 @@ namespace Hospital
         public App()
         {
             Repository.Instance = new SqLiteRepository();
-            //AddPatientRecords(1000);
+            //AddPatientRecords(100);
             SetCulture();
         }
 
         //TODO: for load & performance tests
         private static void AddPatientRecords(int amount)
         {
+            Repository.Instance.GetPatientRecords();
+
             for (int index = 1; index <= amount; ++index)
             {
                 Repository.Instance.AddPatientRecord(new PatientRecord
