@@ -61,15 +61,6 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
-        /// </summary>
-        public static string Add {
-            get {
-                return ResourceManager.GetString("Add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add a new patient record.
         /// </summary>
         public static string AddNewPatientRecord {
@@ -84,6 +75,15 @@ namespace Hospital.Properties {
         public static string Amount {
             get {
                 return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birth year.
+        /// </summary>
+        public static string BirthYear {
+            get {
+                return ResourceManager.GetString("BirthYear", resourceCulture);
             }
         }
         
@@ -106,7 +106,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctor ({0}%):.
+        ///   Looks up a localized string similar to Doctor amount.
         /// </summary>
         public static string DoctorAmount {
             get {
@@ -133,7 +133,25 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hospital ({0}%):.
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        public static string Gender {
+            get {
+                return ResourceManager.GetString("Gender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hospital amount.
         /// </summary>
         public static string HospitalAmount {
             get {
@@ -156,6 +174,15 @@ namespace Hospital.Properties {
         public static string MainMenu {
             get {
                 return ResourceManager.GetString("MainMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
             }
         }
         
@@ -205,6 +232,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a date.
         /// </summary>
         public static string SelectDate {
@@ -237,6 +273,15 @@ namespace Hospital.Properties {
         public static string SpecificDateReport {
             get {
                 return ResourceManager.GetString("SpecificDateReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Town / Village.
+        /// </summary>
+        public static string TownOrVillage {
+            get {
+                return ResourceManager.GetString("TownOrVillage", resourceCulture);
             }
         }
         

@@ -12,9 +12,6 @@ using LocalizationResources = Hospital.Properties.Resources;
 
 namespace Hospital
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private const string CULTURE_NAME = "uk-UA";
@@ -37,7 +34,12 @@ namespace Hospital
                 {
                     PatientName = index.ToString(),
                     DoctorName = index.ToString(),
-                    Amount = index,
+                    FinancialData = new PatientRecordFinancialData
+                    {
+                        DoctorAmount = index,
+                        HospitalAmount = index,
+                        Amount = index
+                    },
                     VisitDate = DateTime.Today
                 });
             }

@@ -139,7 +139,12 @@
     </Compile>
     <Compile Include="Behaviours\PasswordBoxBehavior.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DependencyProperties\FocusController.cs" />
+    <Compile Include="Models\PatientRecordFinancialData.cs" />
+    <Compile Include="ValueConverters\EnumToStringConverter.cs" />
     <Compile Include="Helpers\DateRangeValidator.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Models\PatientRecord.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
@@ -160,7 +165,7 @@
     <Compile Include="Enums\LoginStatus.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Reports\PatientReportViewModel.cs" />
-    <Compile Include="ViewModels\ReportsViewModel.cs" />
+    <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\SpecificDateReportViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddEditPatientRecord.xaml.cs">

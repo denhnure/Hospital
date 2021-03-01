@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Hospital.Commands;
 using Hospital.Models;
 using Hospital.Repositories;
+using Hospital.ViewModels.Reports;
 
 namespace Hospital.ViewModels.PatientRecords
 {
@@ -50,7 +51,7 @@ namespace Hospital.ViewModels.PatientRecords
             this.mainWindowViewModel = mainWindowViewModel;
 
             AddNewPatientRecordCommand = new RelayCommand(AddNewPatientRecord, c => Repository.Instance.IsLoggedIn);
-            EditLastPatientRecordCommand = new RelayCommand(EditLastPatientRecord, c => Repository.Instance.IsLoggedIn);
+            EditLastPatientRecordCommand = new RelayCommand(EditLastPatientRecord, c => Repository.Instance.IsLoggedIn && PatientRecords.Count > 0);
             GoToReportsCommand = new RelayCommand(GoToReports);
 
             FetchPatientRecords();

@@ -84,8 +84,7 @@
                 Style="{StaticResource ellipseButton}"
                 Margin="5px 0"
                 IsDefault="True"
-                Command="{Binding SignInCommand}" 
-                CommandParameter="{Binding ElementName=passwordBox}" />
+                Command="{Binding SignInCommand}" />
         </Grid>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Label HorizontalAlignment="Center" Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}" 
@@ -99,8 +98,7 @@
                 MinHeight="28px"
                 MinWidth="120px"
                 IsDefault="True"
-                Command="{Binding TryLoginAgainCommand}" 
-                CommandParameter="{Binding ElementName=SignInWindowName}" />
+                Command="{Binding TryLoginAgainCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

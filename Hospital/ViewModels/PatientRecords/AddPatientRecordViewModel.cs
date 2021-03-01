@@ -1,4 +1,5 @@
 ﻿using System;
+using Hospital.Enums;
 using Hospital.Models;
 using Hospital.Repositories;
 
@@ -12,6 +13,7 @@ namespace Hospital.ViewModels.PatientRecords
             : base(mainWindowViewModel)
         {
             VisitDate = DateTime.Now;
+            Gender = Gender.Male;
         }
 
         protected override void SaveChangesToRepository(PatientRecord patientRecord)

@@ -1,19 +1,31 @@
 ﻿using System;
 using System.Windows.Input;
 using Hospital.Commands;
+using Hospital.Enums;
 using Hospital.Models;
 
 namespace Hospital.ViewModels.PatientRecords
 {
     public abstract class BasePatientRecordViewModel
     {
+        private const int OLDEST_PERSON_YEAR_OF_BIRTH = 1900;
         private readonly MainWindowViewModel mainWindowViewModel;
 
         public string PatientName { get; set; }
 
+        public int? BirthYear { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public string TownOrVillage { get; set; }
+
         public string DoctorName { get; set; }
 
         public string Amount { get; set; }
+
+        public string DoctorAmount { get; set; }
+
+        public string HospitalAmount { get; set; }
 
         public DateTime VisitDate { get; set; }
 
@@ -30,8 +42,16 @@ namespace Hospital.ViewModels.PatientRecords
             var patientRecord = new PatientRecord
             {
                 PatientName = PatientName,
+                BirthYear = BirthYear.Value,
+                Gender = Gender,
+                TownOrVillage = TownOrVillage,
                 DoctorName = DoctorName,
-                Amount = double.Parse(Amount),
+                FinancialData = new PatientRecordFinancialData
+                {
+                    DoctorAmount = double.Parse(DoctorAmount),
+                    HospitalAmount = double.Parse(HospitalAmount),
+                    Amount = double.Parse(Amount)
+                },
                 VisitDate = VisitDate.Date
             };
 
@@ -43,12 +63,20 @@ namespace Hospital.ViewModels.PatientRecords
 
         public bool CanSavePatientRecord(object parameter)
         {
-            double parsedAmount;
-
             return !string.IsNullOrEmpty(PatientName)
+                && BirthYear.HasValue && BirthYear.Value >= OLDEST_PERSON_YEAR_OF_BIRTH
                 && !string.IsNullOrEmpty(DoctorName)
-                && !string.IsNullOrEmpty(Amount) && double.TryParse(Amount, out parsedAmount) && parsedAmount > 0
+                && IsValidAmount(DoctorAmount)
+                && IsValidAmount(HospitalAmount)
+                && IsValidAmount(Amount)
                 && VisitDate.Date <= DateTime.Today;
+        }
+
+        private bool IsValidAmount(string amount)
+        {
+            double parsedAmount;
+            
+            return !string.IsNullOrEmpty(amount) && double.TryParse(amount, out parsedAmount) && parsedAmount > 0;
         }
     }
 }

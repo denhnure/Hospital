@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Hospital.Commands;
 using Hospital.Helpers;
+using Hospital.Models;
 using Hospital.Properties;
 using Hospital.Repositories;
 
@@ -12,6 +13,8 @@ namespace Hospital.ViewModels.Reports
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private int? patientCount;
+        private double? doctorAmount;
+        private double? hospitalAmount;
         private double? amount;
         private string validationText;
 
@@ -34,9 +37,25 @@ namespace Hospital.ViewModels.Reports
             }
         }
 
-        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT_FACTOR;
+        public double? DoctorAmount
+        {
+            get { return doctorAmount; }
+            set
+            {
+                doctorAmount = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DoctorAmount)));
+            }
+        }
 
-        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT_FACTOR;
+        public double? HospitalAmount
+        {
+            get { return hospitalAmount; }
+            set
+            {
+                hospitalAmount = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HospitalAmount)));
+            }
+        }
 
         public double? Amount
         {
@@ -45,8 +64,6 @@ namespace Hospital.ViewModels.Reports
             {
                 amount = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Amount)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DoctorAmount)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HospitalAmount)));
             }
         }
 
@@ -85,7 +102,10 @@ namespace Hospital.ViewModels.Reports
             }
 
             PatientCount = patientCount;
-            Amount = Repository.Instance.GetAmount(FromDate, ToDate);
+            PatientRecordFinancialData aggregatedFinancialData = Repository.Instance.GetAggregatedFinancialData(FromDate, ToDate);
+            DoctorAmount = aggregatedFinancialData.DoctorAmount;
+            HospitalAmount = aggregatedFinancialData.HospitalAmount;
+            Amount = aggregatedFinancialData.Amount;
         }
     }
 }

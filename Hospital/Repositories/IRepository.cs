@@ -20,10 +20,10 @@ namespace Hospital.Repositories
 
         bool DoesPatientExist(string patientName);
 
-        double? GetPatientAmount(string patientName, DateTime? fromDate, DateTime? toDate);
+        PatientRecordFinancialData GetAggregatedPatientFinancialData(string patientName, DateTime? fromDate, DateTime? toDate);
 
         int GetPatientCount(DateTime? fromDate, DateTime? toDate);
 
-        double? GetAmount(DateTime? fromDate, DateTime? toDate);
+        PatientRecordFinancialData GetAggregatedFinancialData(DateTime? fromDate, DateTime? toDate);
     }
 }

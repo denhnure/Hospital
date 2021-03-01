@@ -48,13 +48,13 @@
                 </Grid.RowDefinitions>
                 <Label Margin="0 1px">Number of patients:</Label>
                 <Label Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Content="{Binding Path=PatientCount}" />
-                <Label Grid.Row="1" Margin="0 1px">Doctor (60%):</Label>
+                <Label Grid.Row="1" Margin="0 1px" Content="{x:Static p:Resources.DoctorAmount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=DoctorAmount}" />
-                <Label Grid.Row="2" Margin="0 4px">Hospital (40%):</Label>
+                <Label Grid.Row="2" Margin="0 4px" Content="{x:Static p:Resources.HospitalAmount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=HospitalAmount}" />
-                <Label Grid.Row="3" Margin="0 4px">Amount:</Label>
+                <Label Grid.Row="3" Margin="0 4px" Content="{x:Static p:Resources.Amount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
 

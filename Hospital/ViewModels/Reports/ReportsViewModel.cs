@@ -2,7 +2,7 @@
 using Hospital.Properties;
 using Hospital.ViewModels.Reports;
 
-namespace Hospital.ViewModels
+namespace Hospital.ViewModels.Reports
 {
     public class ReportsViewModel : IPageViewModel
     {

@@ -11,10 +11,17 @@ namespace Hospital.ViewModels.PatientRecords
             : base(mainWindowViewModel)
         {
             PatientRecord lastPatientRecord = Repository.Instance.GetLastPatientRecord();
-            
+
             PatientName = lastPatientRecord.PatientName;
+            BirthYear = lastPatientRecord.BirthYear;
+            Gender = lastPatientRecord.Gender;
+            TownOrVillage = lastPatientRecord.TownOrVillage;
             DoctorName = lastPatientRecord.DoctorName;
-            Amount = lastPatientRecord.Amount.ToString();
+
+            //TODO: use int?
+            DoctorAmount = lastPatientRecord.FinancialData.DoctorAmount.ToString();
+            HospitalAmount = lastPatientRecord.FinancialData.HospitalAmount.ToString();
+            Amount = lastPatientRecord.FinancialData.Amount.ToString();
             VisitDate = lastPatientRecord.VisitDate;
         }
 

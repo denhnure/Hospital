@@ -73,8 +73,13 @@
                 IsReadOnly="True" HorizontalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.BirthYear}" Binding="{Binding Path=BirthYear}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.Gender}" Binding="{Binding Path=Gender, Converter={StaticResource EnumToStringConverter}}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.TownOrVillage}" Binding="{Binding Path=TownOrVillage}" />
                     <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
-                    <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=Amount}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.DoctorAmount}" Binding="{Binding Path=FinancialData.DoctorAmount}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.HospitalAmount}" Binding="{Binding Path=FinancialData.HospitalAmount}" />
+                    <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=FinancialData.Amount}" />
                     <DataGridTextColumn Header="{x:Static p:Resources.VisitDate}" Binding="{Binding Path=VisitDate, StringFormat=dd-MM-yyyy}" />
                 </DataGrid.Columns>
             </DataGrid>

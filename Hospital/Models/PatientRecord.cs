@@ -1,4 +1,5 @@
 ﻿using System;
+using Hospital.Enums;
 
 namespace Hospital.Models
 {
@@ -6,13 +7,15 @@ namespace Hospital.Models
     {
         public string PatientName { get; set; }
 
+        public int BirthYear { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public string TownOrVillage { get; set; }
+
         public string DoctorName { get; set; }
 
-        public double DoctorAmount => Amount * Constants.DOCTOR_AMOUNT_FACTOR;
-
-        public double HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT_FACTOR;
-
-        public double Amount { get; set; }
+        public PatientRecordFinancialData FinancialData { get; set; }
 
         public DateTime VisitDate { get; set; }
     }

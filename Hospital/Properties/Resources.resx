@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="AddNewPatientRecord" xml:space="preserve">
     <value>Add a new patient record</value>
   </data>
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
+  </data>
+  <data name="BirthYear" xml:space="preserve">
+    <value>Birth year</value>
   </data>
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
@@ -133,7 +133,7 @@
     <value>Date range report</value>
   </data>
   <data name="DoctorAmount" xml:space="preserve">
-    <value>Doctor ({0}%):</value>
+    <value>Doctor amount</value>
   </data>
   <data name="DoctorName" xml:space="preserve">
     <value>Doctor name</value>
@@ -141,14 +141,23 @@
   <data name="EditLastPatientRecord" xml:space="preserve">
     <value>Edit the last patient record</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
   <data name="HospitalAmount" xml:space="preserve">
-    <value>Hospital ({0}%):</value>
+    <value>Hospital amount</value>
   </data>
   <data name="InputData" xml:space="preserve">
     <value>Input data</value>
   </data>
   <data name="MainMenu" xml:space="preserve">
     <value>Main menu</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -165,6 +174,9 @@
   <data name="Results" xml:space="preserve">
     <value>Results</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="SelectDate" xml:space="preserve">
     <value>Select a date</value>
   </data>
@@ -176,6 +188,9 @@
   </data>
   <data name="SpecificDateReport" xml:space="preserve">
     <value>Specific date report</value>
+  </data>
+  <data name="TownOrVillage" xml:space="preserve">
+    <value>Town / Village</value>
   </data>
   <data name="ValidationErrorTemplate" xml:space="preserve">
     <value>Ошибка: {0}!</value>

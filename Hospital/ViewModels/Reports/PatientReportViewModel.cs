@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Hospital.Commands;
 using Hospital.Helpers;
+using Hospital.Models;
 using Hospital.Properties;
 using Hospital.Repositories;
 
@@ -11,6 +12,8 @@ namespace Hospital.ViewModels.Reports
     public class PatientReportViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private double? doctorAmount;
+        private double? hospitalAmount;
         private double? amount;
         private string validationText;
 
@@ -25,9 +28,25 @@ namespace Hospital.ViewModels.Reports
 
         public DateTime? ToDate { get; set; }
 
-        public double? DoctorAmount => Amount * Constants.DOCTOR_AMOUNT_FACTOR;
+        public double? DoctorAmount
+        {
+            get { return doctorAmount; }
+            set
+            {
+                doctorAmount = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DoctorAmount)));
+            }
+        }
 
-        public double? HospitalAmount => Amount * Constants.HOSPITAL_AMOUNT_FACTOR;
+        public double? HospitalAmount
+        {
+            get { return hospitalAmount; }
+            set
+            {
+                hospitalAmount = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HospitalAmount)));
+            }
+        }
 
         public double? Amount
         {
@@ -36,8 +55,6 @@ namespace Hospital.ViewModels.Reports
             {
                 amount = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Amount)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DoctorAmount)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HospitalAmount)));
             }
         }
 
@@ -72,15 +89,17 @@ namespace Hospital.ViewModels.Reports
                 return;
             }
 
-            double? amount = Repository.Instance.GetPatientAmount(PatientName, FromDate, ToDate);
+            PatientRecordFinancialData aggregatedPatientFinancialData = Repository.Instance.GetAggregatedPatientFinancialData(PatientName, FromDate, ToDate);
 
-            if(amount == null)
+            if(aggregatedPatientFinancialData == null)
             {
                 ValidationText = string.Format(Resources.ValidationErrorTemplate, "данный пациент не был в клинике в указанный период");
                 return;
             }
 
-            Amount = amount;
+            DoctorAmount = aggregatedPatientFinancialData.DoctorAmount;
+            HospitalAmount = aggregatedPatientFinancialData.HospitalAmount;
+            Amount = aggregatedPatientFinancialData.Amount;
         }
     }
 }

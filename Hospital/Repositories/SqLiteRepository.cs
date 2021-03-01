@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.IO;
+using Hospital.Enums;
 using Hospital.Models;
 
 namespace Hospital.Repositories
@@ -54,13 +55,18 @@ namespace Hospital.Repositories
                 {
                     command.CommandText = @"INSERT INTO [PatientRecord]
                                     (
-                                        [PatientName], [DoctorName], [Amount], [VisitDate]) 
-                                        VALUES(@patientName, @doctorName, @amount, @visitDate
+                                        [PatientName], [BirthYear], [Gender], [TownOrVillage], [DoctorName], [DoctorAmount], [HospitalAmount], [Amount], [VisitDate]) 
+                                        VALUES(@patientName, @birthYear, @gender, @townOrVillage, @doctorName, @doctorAmount, @hospitalAmount, @amount, @visitDate
                                     );";
 
                     command.Parameters.AddWithValue("@patientName", patientRecord.PatientName);
+                    command.Parameters.AddWithValue("@birthYear", patientRecord.BirthYear);
+                    command.Parameters.AddWithValue("@gender", (int)patientRecord.Gender);
+                    command.Parameters.AddWithValue("@townOrVillage", patientRecord.TownOrVillage);
                     command.Parameters.AddWithValue("@doctorName", patientRecord.DoctorName);
-                    command.Parameters.AddWithValue("@amount", patientRecord.Amount);
+                    command.Parameters.AddWithValue("@doctorAmount", patientRecord.FinancialData.DoctorAmount);
+                    command.Parameters.AddWithValue("@hospitalAmount", patientRecord.FinancialData.HospitalAmount);
+                    command.Parameters.AddWithValue("@amount", patientRecord.FinancialData.Amount);
                     command.Parameters.AddWithValue("@visitDate", patientRecord.VisitDate);
 
                     command.ExecuteNonQuery();
@@ -91,11 +97,19 @@ namespace Hospital.Repositories
                     {
                         patientRecords.Add
                         (
-                            new PatientRecord 
-                            { 
+                            new PatientRecord
+                            {
                                 PatientName = (string)sqlDataReader["PatientName"],
+                                BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
+                                Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
+                                TownOrVillage = (string)sqlDataReader["TownOrVillage"],
                                 DoctorName = (string)sqlDataReader["DoctorName"],
-                                Amount = (double)sqlDataReader["Amount"],
+                                FinancialData = new PatientRecordFinancialData
+                                {
+                                    DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                                    HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                                    Amount = (double)sqlDataReader["Amount"]
+                                },
                                 VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
                             }
                         );
@@ -114,7 +128,7 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"SELECT * FROM [PatientRecord] 
+                    command.CommandText = @"SELECT * FROM [PatientRecord]
                                             WHERE rowid = (SELECT MAX(rowid) FROM [PatientRecord])";
 
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
@@ -123,8 +137,16 @@ namespace Hospital.Repositories
                     return new PatientRecord
                     {
                         PatientName = (string)sqlDataReader["PatientName"],
+                        BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
+                        Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
+                        TownOrVillage = (string)sqlDataReader["TownOrVillage"],
                         DoctorName = (string)sqlDataReader["DoctorName"],
-                        Amount = (double)sqlDataReader["Amount"],
+                        FinancialData = new PatientRecordFinancialData
+                        {
+                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                            Amount = (double)sqlDataReader["Amount"]
+                        },
                         VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
                     };
                 }
@@ -139,13 +161,20 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"UPDATE [PatientRecord] 
-                                            SET [PatientName] = @patientName, [DoctorName] = @doctorName, [Amount] = @amount, [VisitDate] = @visitDate
+                    command.CommandText = @"UPDATE [PatientRecord]
+                                            SET [PatientName] = @patientName, [BirthYear] = @birthYear, [Gender] = @gender,
+                                                [TownOrVillage] = @townOrVillage, [DoctorName] = @doctorName, [DoctorAmount] = @doctorAmount,
+                                                [HospitalAmount] = @hospitalAmount, [Amount] = @amount, [VisitDate] = @visitDate
                                             WHERE rowid = (SELECT MAX(rowid) FROM [PatientRecord])";
 
                     command.Parameters.AddWithValue("@patientName", patientRecord.PatientName);
+                    command.Parameters.AddWithValue("@birthYear", patientRecord.BirthYear);
+                    command.Parameters.AddWithValue("@gender", (int)patientRecord.Gender);
+                    command.Parameters.AddWithValue("@townOrVillage", patientRecord.TownOrVillage);
                     command.Parameters.AddWithValue("@doctorName", patientRecord.DoctorName);
-                    command.Parameters.AddWithValue("@amount", patientRecord.Amount);
+                    command.Parameters.AddWithValue("@doctorAmount", patientRecord.FinancialData.DoctorAmount);
+                    command.Parameters.AddWithValue("@hospitalAmount", patientRecord.FinancialData.HospitalAmount);
+                    command.Parameters.AddWithValue("@amount", patientRecord.FinancialData.Amount);
                     command.Parameters.AddWithValue("@visitDate", patientRecord.VisitDate);
 
                     command.ExecuteNonQuery();
@@ -164,8 +193,13 @@ namespace Hospital.Repositories
                     cmd.CommandText = @"CREATE TABLE IF NOT EXISTS [PatientRecord]
                                         (
                                             [PatientName] NVARCHAR(200),
+                                            [BirthYear] INTEGER,
+                                            [Gender] INTEGER,
+                                            [TownOrVillage] NVARCHAR(200),
                                             [DoctorName] NVARCHAR(200),
                                             [Amount] REAL,
+                                            [DoctorAmount] REAL,
+                                            [HospitalAmount] REAL,
                                             [VisitDate] TEXT
                                         );";
                     
@@ -193,7 +227,7 @@ namespace Hospital.Repositories
             }
         }
 
-        public double? GetPatientAmount(string patientName, DateTime? fromDate, DateTime? toDate)
+        public PatientRecordFinancialData GetAggregatedPatientFinancialData(string patientName, DateTime? fromDate, DateTime? toDate)
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
@@ -201,7 +235,7 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"SELECT SUM(Amount)
+                    command.CommandText = @"SELECT SUM(DoctorAmount) AS DoctorAmount, SUM(HospitalAmount) AS HospitalAmount, SUM(Amount) AS Amount
                                             FROM [PatientRecord]
                                             WHERE [PatientName] = @patientName
                                                 AND ([VisitDate] >= @fromDate OR @fromDate IS NULL) 
@@ -211,11 +245,18 @@ namespace Hospital.Repositories
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
 
-                    var result = command.ExecuteScalar();
+                    SQLiteDataReader sqlDataReader = command.ExecuteReader();
 
-                    return result is DBNull
+                    bool isValidResult = sqlDataReader.Read();
+
+                    return !isValidResult
                         ? null
-                        : (double?)result;
+                        : new PatientRecordFinancialData
+                        {
+                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                            Amount = (double)sqlDataReader["Amount"],
+                        };
                 }
             }
         }
@@ -241,7 +282,7 @@ namespace Hospital.Repositories
             }
         }
 
-        public double? GetAmount(DateTime? fromDate, DateTime? toDate)
+        public PatientRecordFinancialData GetAggregatedFinancialData(DateTime? fromDate, DateTime? toDate)
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
@@ -249,7 +290,7 @@ namespace Hospital.Repositories
 
                 using (var command = new SQLiteCommand(con))
                 {
-                    command.CommandText = @"SELECT SUM(Amount)
+                    command.CommandText = @"SELECT SUM(DoctorAmount) AS DoctorAmount, SUM(HospitalAmount) AS HospitalAmount, SUM(Amount) AS Amount
                                             FROM [PatientRecord]
                                             WHERE ([VisitDate] >= @fromDate OR @fromDate IS NULL)
                                                 AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
@@ -257,11 +298,18 @@ namespace Hospital.Repositories
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
 
-                    var result = command.ExecuteScalar();
+                    SQLiteDataReader sqlDataReader = command.ExecuteReader();
 
-                    return result is DBNull
+                    bool isValidResult = sqlDataReader.Read();
+
+                    return !isValidResult
                         ? null
-                        : (double?)result;
+                        : new PatientRecordFinancialData
+                        {
+                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                            Amount = (double)sqlDataReader["Amount"],
+                        };
                 }
             }
         }

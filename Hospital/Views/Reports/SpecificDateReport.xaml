@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mainNamespace="clr-namespace:Hospital"
              xmlns:p="clr-namespace:Hospital.Properties"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -25,8 +24,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
                 <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
-                <DataGridTextColumn Header="{x:Static mainNamespace:Constants.DOCTOR_AMOUNT_TEXT}" Binding="{Binding Path=DoctorAmount}" />
-                <DataGridTextColumn Header="{x:Static mainNamespace:Constants.HOSPITAL_AMOUNT_TEXT}" Binding="{Binding Path=HospitalAmount}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.DoctorAmount}" Binding="{Binding Path=DoctorAmount}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.HospitalAmount}" Binding="{Binding Path=HospitalAmount}" />
                 <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=Amount}" />
             </DataGrid.Columns>
         </DataGrid>
