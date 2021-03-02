@@ -14,6 +14,8 @@ namespace Hospital.Repositories
 
         ObservableCollection<PatientRecord> GetPatientRecords(DateTime? date = null);
 
+        ObservableCollection<PatientRecord> GetSpecificPatientRecords(string patientName, DateTime? fromDate, DateTime? toDate);
+
         PatientRecord GetLastPatientRecord();
 
         void UpdateLastPatientRecord(PatientRecord patientRecord);

@@ -120,6 +120,55 @@ namespace Hospital.Repositories
             return patientRecords;
         }
 
+        public ObservableCollection<PatientRecord> GetSpecificPatientRecords(string patientName, DateTime? fromDate, DateTime? toDate)
+        {
+            var specificPatientRecords = new ObservableCollection<PatientRecord>();
+
+            using (var con = new SQLiteConnection(CONNECTION_STRING))
+            {
+                con.Open();
+
+                using (var command = new SQLiteCommand(con))
+                {
+                    command.CommandText = @"SELECT *
+                                            FROM [PatientRecord]
+                                            WHERE [PatientName] = @patientName
+                                                AND ([VisitDate] >= @fromDate OR @fromDate IS NULL) 
+                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+
+                    command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
+                    command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
+                    command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
+
+                    SQLiteDataReader sqlDataReader = command.ExecuteReader();
+
+                    while (sqlDataReader.Read())
+                    {
+                        specificPatientRecords.Add
+                        (
+                            new PatientRecord
+                            {
+                                PatientName = (string)sqlDataReader["PatientName"],
+                                BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
+                                Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
+                                TownOrVillage = (string)sqlDataReader["TownOrVillage"],
+                                DoctorName = (string)sqlDataReader["DoctorName"],
+                                FinancialData = new PatientRecordFinancialData
+                                {
+                                    DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                                    HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                                    Amount = (double)sqlDataReader["Amount"]
+                                },
+                                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
+                            }
+                        );
+                    }
+                }
+            }
+
+            return specificPatientRecords;
+        }
+
         public PatientRecord GetLastPatientRecord()
         {
             using (var con = new SQLiteConnection(CONNECTION_STRING))

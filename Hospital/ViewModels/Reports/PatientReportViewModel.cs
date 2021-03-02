@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using Hospital.Commands;
@@ -16,6 +17,7 @@ namespace Hospital.ViewModels.Reports
         private double? hospitalAmount;
         private double? amount;
         private string validationText;
+        private ObservableCollection<PatientRecord> patientRecords;
 
         public PatientReportViewModel()
         {
@@ -68,16 +70,29 @@ namespace Hospital.ViewModels.Reports
             }
         }
 
+        public ObservableCollection<PatientRecord> PatientRecords
+        {
+            get { return patientRecords; }
+            private set
+            {
+                patientRecords = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PatientRecords)));
+            }
+        }
+
         public ICommand CreatePatientReportCommand { get; private set; }
 
         private void CreatePatientReport(object obj)
         {
+            DoctorAmount = null;
+            HospitalAmount = null;
             Amount = null;
+            PatientRecords = null;
             ValidationText = null;
 
             if (!Repository.Instance.DoesPatientExist(PatientName))
             {
-                ValidationText = string.Format(Resources.ValidationErrorTemplate, "данного пациента в системе не обнаружено");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, Resources.PatientNotFound);
                 return;
             }
 
@@ -93,13 +108,14 @@ namespace Hospital.ViewModels.Reports
 
             if(aggregatedPatientFinancialData == null)
             {
-                ValidationText = string.Format(Resources.ValidationErrorTemplate, "данный пациент не был в клинике в указанный период");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, Resources.PatientWasNotAtClinicDuringSpecifiedPeriod);
                 return;
             }
 
             DoctorAmount = aggregatedPatientFinancialData.DoctorAmount;
             HospitalAmount = aggregatedPatientFinancialData.HospitalAmount;
             Amount = aggregatedPatientFinancialData.Amount;
+            PatientRecords = Repository.Instance.GetSpecificPatientRecords(PatientName, FromDate, ToDate);
         }
     }
 }

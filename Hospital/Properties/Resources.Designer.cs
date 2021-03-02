@@ -205,11 +205,29 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to this patient was not found in the system.
+        /// </summary>
+        public static string PatientNotFound {
+            get {
+                return ResourceManager.GetString("PatientNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patient report.
         /// </summary>
         public static string PatientReport {
             get {
                 return ResourceManager.GetString("PatientReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to this patient was not at the clinic during the specified period.
+        /// </summary>
+        public static string PatientWasNotAtClinicDuringSpecifiedPeriod {
+            get {
+                return ResourceManager.GetString("PatientWasNotAtClinicDuringSpecifiedPeriod", resourceCulture);
             }
         }
         
