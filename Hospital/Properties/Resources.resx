@@ -168,6 +168,9 @@
   <data name="PatientNotFound" xml:space="preserve">
     <value>this patient was not found in the system</value>
   </data>
+  <data name="PatientRecords" xml:space="preserve">
+    <value>Patient records</value>
+  </data>
   <data name="PatientReport" xml:space="preserve">
     <value>Patient report</value>
   </data>
@@ -186,11 +189,8 @@
   <data name="SelectDate" xml:space="preserve">
     <value>Select a date</value>
   </data>
-  <data name="SigInDialogTitle" xml:space="preserve">
-    <value>Вход в систему</value>
-  </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Вход</value>
+    <value>Sign in</value>
   </data>
   <data name="SpecificDateReport" xml:space="preserve">
     <value>Specific date report</value>

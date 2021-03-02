@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Hospital.Commands;
 using Hospital.Models;
+using Hospital.Properties;
 using Hospital.Repositories;
 using Hospital.ViewModels.Reports;
 
@@ -18,7 +19,7 @@ namespace Hospital.ViewModels.PatientRecords
         private bool isFetchingPatientRecords;
         private ObservableCollection<PatientRecord> patientRecords;
 
-        public string Title => "PatientRecords";
+        public string Title => Resources.PatientRecords;
 
         public ICommand AddNewPatientRecordCommand { get; private set; }
 

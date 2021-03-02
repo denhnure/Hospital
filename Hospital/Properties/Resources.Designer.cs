@@ -214,6 +214,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patient records.
+        /// </summary>
+        public static string PatientRecords {
+            get {
+                return ResourceManager.GetString("PatientRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patient report.
         /// </summary>
         public static string PatientReport {
@@ -268,16 +277,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вход в систему.
-        /// </summary>
-        public static string SigInDialogTitle {
-            get {
-                return ResourceManager.GetString("SigInDialogTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Вход.
+        ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string SignIn {
             get {

@@ -1,11 +1,12 @@
 ﻿using Hospital.Models;
+using Hospital.Properties;
 using Hospital.Repositories;
 
 namespace Hospital.ViewModels.PatientRecords
 {
     public class EditLastPatientRecordViewModel : BasePatientRecordViewModel, IPageViewModel
     {
-        public string Title => "Edit";
+        public string Title => Resources.EditLastPatientRecord;
 
         public EditLastPatientRecordViewModel(MainWindowViewModel mainWindowViewModel)
             : base(mainWindowViewModel)
