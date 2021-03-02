@@ -105,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\PatientRecordsTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Reports\DateRangeReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +174,9 @@
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\AddEditPatientRecord.xaml.cs">
       <DependentUpon>AddEditPatientRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientRecordsTable.xaml.cs">
+      <DependentUpon>PatientRecordsTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Reports\DateRangeReport.xaml.cs">
       <DependentUpon>DateRangeReport.xaml</DependentUpon>

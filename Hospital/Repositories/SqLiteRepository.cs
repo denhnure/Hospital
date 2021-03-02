@@ -95,24 +95,7 @@ namespace Hospital.Repositories
 
                     while (sqlDataReader.Read())
                     {
-                        patientRecords.Add
-                        (
-                            new PatientRecord
-                            {
-                                PatientName = (string)sqlDataReader["PatientName"],
-                                BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
-                                Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
-                                TownOrVillage = (string)sqlDataReader["TownOrVillage"],
-                                DoctorName = (string)sqlDataReader["DoctorName"],
-                                FinancialData = new PatientRecordFinancialData
-                                {
-                                    DoctorAmount = (double)sqlDataReader["DoctorAmount"],
-                                    HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                                    Amount = (double)sqlDataReader["Amount"]
-                                },
-                                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
-                            }
-                        );
+                        patientRecords.Add(CreatePatientRecord(sqlDataReader));
                     }
                 }
             }
@@ -144,24 +127,7 @@ namespace Hospital.Repositories
 
                     while (sqlDataReader.Read())
                     {
-                        specificPatientRecords.Add
-                        (
-                            new PatientRecord
-                            {
-                                PatientName = (string)sqlDataReader["PatientName"],
-                                BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
-                                Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
-                                TownOrVillage = (string)sqlDataReader["TownOrVillage"],
-                                DoctorName = (string)sqlDataReader["DoctorName"],
-                                FinancialData = new PatientRecordFinancialData
-                                {
-                                    DoctorAmount = (double)sqlDataReader["DoctorAmount"],
-                                    HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                                    Amount = (double)sqlDataReader["Amount"]
-                                },
-                                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
-                            }
-                        );
+                        specificPatientRecords.Add(CreatePatientRecord(sqlDataReader));
                     }
                 }
             }
@@ -183,21 +149,7 @@ namespace Hospital.Repositories
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
                     sqlDataReader.Read();
 
-                    return new PatientRecord
-                    {
-                        PatientName = (string)sqlDataReader["PatientName"],
-                        BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
-                        Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
-                        TownOrVillage = (string)sqlDataReader["TownOrVillage"],
-                        DoctorName = (string)sqlDataReader["DoctorName"],
-                        FinancialData = new PatientRecordFinancialData
-                        {
-                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
-                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                            Amount = (double)sqlDataReader["Amount"]
-                        },
-                        VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
-                    };
+                    return CreatePatientRecord(sqlDataReader);
                 }
             }
         }
@@ -361,6 +313,25 @@ namespace Hospital.Repositories
                         };
                 }
             }
+        }
+
+        private PatientRecord CreatePatientRecord(SQLiteDataReader sqlDataReader)
+        {
+            return new PatientRecord
+            {
+                PatientName = (string)sqlDataReader["PatientName"],
+                BirthYear = Convert.ToInt32(sqlDataReader["BirthYear"]),
+                Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
+                TownOrVillage = (string)sqlDataReader["TownOrVillage"],
+                DoctorName = (string)sqlDataReader["DoctorName"],
+                FinancialData = new PatientRecordFinancialData
+                {
+                    DoctorAmount = (double)sqlDataReader["DoctorAmount"],
+                    HospitalAmount = (double)sqlDataReader["HospitalAmount"],
+                    Amount = (double)sqlDataReader["Amount"]
+                },
+                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
+            };
         }
     }
 }

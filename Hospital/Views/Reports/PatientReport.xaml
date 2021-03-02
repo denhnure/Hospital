@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              xmlns:p="clr-namespace:Hospital.Properties"
+             xmlns:views="clr-namespace:Hospital.Views"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -61,20 +62,6 @@
                 <Label Grid.ColumnSpan="2" Grid.Row="3" Margin="0 2px" VerticalAlignment="Center" FontWeight="Bold" Foreground="Red" Content="{Binding Path=ValidationText}" />
             </Grid>
         </GroupBox>
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Margin="10px" FontSize="16px" ItemsSource="{Binding Path=PatientRecords}"
-            ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
-            IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.BirthYear}" Binding="{Binding Path=BirthYear}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.Gender}" Binding="{Binding Path=Gender, Converter={StaticResource EnumToStringConverter}}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.TownOrVillage}" Binding="{Binding Path=TownOrVillage}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.DoctorAmount}" Binding="{Binding Path=FinancialData.DoctorAmount}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.HospitalAmount}" Binding="{Binding Path=FinancialData.HospitalAmount}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.Amount}" Binding="{Binding Path=FinancialData.Amount}" />
-                <DataGridTextColumn Header="{x:Static p:Resources.VisitDate}" Binding="{Binding Path=VisitDate, StringFormat=dd-MM-yyyy}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <views:PatientRecordsTable Grid.Row="1" Grid.ColumnSpan="2" Margin="10px" />
     </Grid>
 </UserControl>
