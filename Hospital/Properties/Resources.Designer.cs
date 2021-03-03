@@ -241,6 +241,15 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Print basic patient information.
+        /// </summary>
+        public static string PrintBasicPatientInformation {
+            get {
+                return ResourceManager.GetString("PrintBasicPatientInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string Reports {

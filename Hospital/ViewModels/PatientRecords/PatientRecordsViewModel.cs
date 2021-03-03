@@ -12,18 +12,29 @@ namespace Hospital.ViewModels.PatientRecords
 {
     public class PatientRecordsViewModel : IPageViewModel, INotifyPropertyChanged
     {
-        private const int MINUMUM_SPINNER_DURATION = 1;
+        private const int MINUMUM_SPINNER_DURATION = 1000;
         private readonly MainWindowViewModel mainWindowViewModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private bool isFetchingPatientRecords;
         private ObservableCollection<PatientRecord> patientRecords;
+        private ICommand editLastPatientRecordCommand;
 
         public string Title => Resources.PatientRecords;
 
         public ICommand AddNewPatientRecordCommand { get; private set; }
 
-        public ICommand EditLastPatientRecordCommand { get; private set; }
+        public ICommand EditLastPatientRecordCommand
+        {
+            get { return editLastPatientRecordCommand; }
+            private set
+            {
+                editLastPatientRecordCommand = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EditLastPatientRecordCommand)));
+            }
+        }
+
+        public ICommand PrintBasicPatientInformationCommand { get; private set; }
 
         public ICommand GoToReportsCommand { get; private set; }
 
@@ -51,16 +62,23 @@ namespace Hospital.ViewModels.PatientRecords
         {
             this.mainWindowViewModel = mainWindowViewModel;
 
-            AddNewPatientRecordCommand = new RelayCommand(AddNewPatientRecord, c => Repository.Instance.IsLoggedIn);
-            EditLastPatientRecordCommand = new RelayCommand(EditLastPatientRecord, c => Repository.Instance.IsLoggedIn && PatientRecords.Count > 0);
+            AddNewPatientRecordCommand = new RelayCommand(AddNewPatientRecord);
+            PrintBasicPatientInformationCommand = new RelayCommand(PrintBasicPatientInformation);
             GoToReportsCommand = new RelayCommand(GoToReports);
 
-            FetchPatientRecords();
+            FetchPatientRecords().ContinueWith(_ =>
+            {
+                EditLastPatientRecordCommand = new RelayCommand(EditLastPatientRecord, c => PatientRecords.Count > 0);
+            });
         }
 
         private void AddNewPatientRecord(object parameter)
         {
             mainWindowViewModel.CurrentPageViewModel = new AddPatientRecordViewModel(mainWindowViewModel);
+        }
+
+        private void PrintBasicPatientInformation(object parameter)
+        {
         }
 
         private void EditLastPatientRecord(object parameter)
@@ -73,7 +91,7 @@ namespace Hospital.ViewModels.PatientRecords
             mainWindowViewModel.CurrentPageViewModel = new ReportsViewModel();
         }
 
-        private async void FetchPatientRecords()
+        private async Task FetchPatientRecords()
         {
             IsFetchingPatientRecords = true;
 
@@ -81,7 +99,7 @@ namespace Hospital.ViewModels.PatientRecords
             Task getPatientRecordsTask = Task.Run(() => PatientRecords = Repository.Instance.GetPatientRecords());
 
             await Task.WhenAll(loadingSpinnerTask, getPatientRecordsTask);
-            
+
             IsFetchingPatientRecords = false;
         }
     }
