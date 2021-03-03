@@ -12,7 +12,8 @@ namespace Hospital.ViewModels.PatientRecords
 {
     public class PatientRecordsViewModel : IPageViewModel, INotifyPropertyChanged
     {
-        private const int MINUMUM_SPINNER_DURATION = 1000;
+        // TODO: increase
+        private const int MINUMUM_SPINNER_DURATION = 1;
         private readonly MainWindowViewModel mainWindowViewModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -79,6 +80,7 @@ namespace Hospital.ViewModels.PatientRecords
 
         private void PrintBasicPatientInformation(object parameter)
         {
+            mainWindowViewModel.CurrentPageViewModel = new PrintBasicPatientInformationViewModel();
         }
 
         private void EditLastPatientRecord(object parameter)

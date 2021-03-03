@@ -105,7 +105,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\MainMenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientRecordsTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrintBasicPatientInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +172,7 @@
     <Compile Include="ViewModels\PatientRecords\BasePatientRecordViewModel.cs" />
     <Compile Include="ViewModels\PatientRecords\AddPatientRecordViewModel.cs" />
     <Compile Include="ViewModels\PatientRecords\EditLastPatientRecordViewModel.cs" />
+    <Compile Include="ViewModels\PrintBasicPatientInformationViewModel.cs" />
     <Compile Include="ViewModels\Reports\DateRangeReportViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Enums\LoginStatus.cs" />
@@ -175,8 +184,14 @@
     <Compile Include="Views\AddEditPatientRecord.xaml.cs">
       <DependentUpon>AddEditPatientRecord.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainMenuButton.xaml.cs">
+      <DependentUpon>MainMenuButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatientRecordsTable.xaml.cs">
       <DependentUpon>PatientRecordsTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintBasicPatientInformation.xaml.cs">
+      <DependentUpon>PrintBasicPatientInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Reports\DateRangeReport.xaml.cs">
       <DependentUpon>DateRangeReport.xaml</DependentUpon>

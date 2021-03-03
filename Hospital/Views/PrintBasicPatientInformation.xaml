@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Hospital.Views.PrintBasicPatientInformation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:Hospital.Properties"
+             xmlns:views="clr-namespace:Hospital.Views"
+             xmlns:DependencyProperties="clr-namespace:Hospital.DependencyProperties"
+             DependencyProperties:FocusController.FocusFirstControl="true"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Background="White" Margin="10px 10px 10px 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1" MinWidth="100px" Height="30px" HorizontalAlignment="Right" Margin="5px"
+            Command="{Binding SavePatientRecordCommand}" Content="{x:Static p:Resources.Print}" />
+        </Grid>
+        <views:MainMenuButton Grid.Row="1" />
+    </Grid>
+</UserControl>

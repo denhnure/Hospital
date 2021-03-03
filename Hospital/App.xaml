@@ -20,6 +20,9 @@
         <DataTemplate DataType="{x:Type patientRecordsViewModels:EditLastPatientRecordViewModel}">
             <views:AddEditPatientRecord />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:PrintBasicPatientInformationViewModel}">
+            <views:PrintBasicPatientInformation />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type reportsViewModels:ReportsViewModel}">
             <views:Reports />
         </DataTemplate>

@@ -177,6 +177,9 @@
   <data name="PatientWasNotAtClinicDuringSpecifiedPeriod" xml:space="preserve">
     <value>this patient was not at the clinic during the specified period</value>
   </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
   <data name="PrintBasicPatientInformation" xml:space="preserve">
     <value>Print basic patient information</value>
   </data>
