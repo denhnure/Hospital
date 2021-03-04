@@ -86,7 +86,7 @@ namespace Hospital.Repositories
                 {
                     command.CommandText = @"SELECT *
                                             FROM [PatientRecord]
-                                            WHERE [VisitDate] == @date OR @date IS NULL
+                                            WHERE date([VisitDate]) = date(@date) OR @date IS NULL
                                             ORDER BY [VisitDate] DESC";
 
                     command.Parameters.Add(new SQLiteParameter("@date", date));

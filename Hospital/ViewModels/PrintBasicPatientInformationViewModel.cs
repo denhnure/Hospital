@@ -13,7 +13,7 @@ namespace Hospital.ViewModels
 {
     public class PrintBasicPatientInformationViewModel : IPageViewModel
     {
-        private const int PRECREATION_OF_FIXED_PAGE_DELAY = 1;
+        private const int PRECREATION_OF_FIXED_PAGE_DELAY = 100;
         private const double SYMBOLS_PER_PAGE = 120;
         private const string FONT_FAMILY = "Arial";
         private const int FONT_SIZE = 14;

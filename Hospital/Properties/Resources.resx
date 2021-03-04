@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddNewPatientRecord" xml:space="preserve">
-    <value>Add a new patient record</value>
+    <value>Додати запис</value>
   </data>
   <data name="Amount" xml:space="preserve">
     <value>Сума</value>
@@ -133,7 +133,7 @@
     <value>м.Мелітополь, вул.Героїв України, 27</value>
   </data>
   <data name="DateRangeReport" xml:space="preserve">
-    <value>Date range report</value>
+    <value>Фінансовий</value>
   </data>
   <data name="DoctorAmount" xml:space="preserve">
     <value>Частка лікаря</value>
@@ -163,16 +163,19 @@
     <value>Частка клініки</value>
   </data>
   <data name="InputData" xml:space="preserve">
-    <value>Input data</value>
+    <value>Вхідні дані</value>
   </data>
   <data name="MainMenu" xml:space="preserve">
-    <value>Main menu</value>
+    <value>Головне меню</value>
   </data>
   <data name="Male" xml:space="preserve">
     <value>Чоловіча</value>
   </data>
   <data name="MinistryOfHealthCareLicense" xml:space="preserve">
     <value>Ліцензія МОЗ України №АГ597651</value>
+  </data>
+  <data name="NumberOfPatients" xml:space="preserve">
+    <value>Кількість пацієнтів</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -184,10 +187,10 @@
     <value>this patient was not found in the system</value>
   </data>
   <data name="PatientRecords" xml:space="preserve">
-    <value>Patient records</value>
+    <value>Записи пацієнтів</value>
   </data>
   <data name="PatientReport" xml:space="preserve">
-    <value>Patient report</value>
+    <value>По пацієнту</value>
   </data>
   <data name="PatientWasNotAtClinicDuringSpecifiedPeriod" xml:space="preserve">
     <value>this patient was not at the clinic during the specified period</value>
@@ -196,13 +199,13 @@
     <value>Друк</value>
   </data>
   <data name="PrintBasicPatientInformation" xml:space="preserve">
-    <value>Print basic patient information</value>
+    <value>Роздрукувати бланк для висновку</value>
   </data>
   <data name="Reports" xml:space="preserve">
     <value>Звіти</value>
   </data>
   <data name="Results" xml:space="preserve">
-    <value>Results</value>
+    <value>Результати</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
@@ -214,7 +217,7 @@
     <value>Sign in</value>
   </data>
   <data name="SpecificDateReport" xml:space="preserve">
-    <value>Specific date report</value>
+    <value>За певну дату</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>По</value>

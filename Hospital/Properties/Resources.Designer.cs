@@ -61,7 +61,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a new patient record.
+        ///   Looks up a localized string similar to Додати запис.
         /// </summary>
         public static string AddNewPatientRecord {
             get {
@@ -106,7 +106,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date range report.
+        ///   Looks up a localized string similar to Фінансовий.
         /// </summary>
         public static string DateRangeReport {
             get {
@@ -196,7 +196,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input data.
+        ///   Looks up a localized string similar to Вхідні дані.
         /// </summary>
         public static string InputData {
             get {
@@ -205,7 +205,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main menu.
+        ///   Looks up a localized string similar to Головне меню.
         /// </summary>
         public static string MainMenu {
             get {
@@ -228,6 +228,15 @@ namespace Hospital.Properties {
         public static string MinistryOfHealthCareLicense {
             get {
                 return ResourceManager.GetString("MinistryOfHealthCareLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кількість пацієнтів.
+        /// </summary>
+        public static string NumberOfPatients {
+            get {
+                return ResourceManager.GetString("NumberOfPatients", resourceCulture);
             }
         }
         
@@ -259,7 +268,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patient records.
+        ///   Looks up a localized string similar to Записи пацієнтів.
         /// </summary>
         public static string PatientRecords {
             get {
@@ -268,7 +277,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patient report.
+        ///   Looks up a localized string similar to По пацієнту.
         /// </summary>
         public static string PatientReport {
             get {
@@ -295,7 +304,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Print basic patient information.
+        ///   Looks up a localized string similar to Роздрукувати бланк для висновку.
         /// </summary>
         public static string PrintBasicPatientInformation {
             get {
@@ -313,7 +322,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Results.
+        ///   Looks up a localized string similar to Результати.
         /// </summary>
         public static string Results {
             get {
@@ -349,7 +358,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specific date report.
+        ///   Looks up a localized string similar to За певну дату.
         /// </summary>
         public static string SpecificDateReport {
             get {

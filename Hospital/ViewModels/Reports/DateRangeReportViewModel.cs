@@ -82,6 +82,8 @@ namespace Hospital.ViewModels.Reports
         private void CreateDateRangeReport(object obj)
         {
             PatientCount = null;
+            DoctorAmount = null;
+            HospitalAmount = null;
             Amount = null;
             ValidationText = null;
 

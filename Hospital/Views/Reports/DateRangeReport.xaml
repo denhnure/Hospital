@@ -23,10 +23,10 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Label HorizontalAlignment="Right" VerticalAlignment="Center">From</Label>
+                <Label HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.From}" />
                 <DatePicker Grid.Column="1" Margin="0 5px" SelectedDate="{Binding Path=FromDate}" />
 
-                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">To</Label>
+                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.To}" />
                 <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
 
                 <Button Grid.Row="2" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
@@ -46,7 +46,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Label Margin="0 1px">Number of patients:</Label>
+                <Label Margin="0 1px" Content="{x:Static p:Resources.NumberOfPatients}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Content="{Binding Path=PatientCount}" />
                 <Label Grid.Row="1" Margin="0 1px" Content="{x:Static p:Resources.DoctorAmount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
@@ -54,7 +54,7 @@
                 <Label Grid.Row="2" Margin="0 4px" Content="{x:Static p:Resources.HospitalAmount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=HospitalAmount}" />
-                <Label Grid.Row="3" Margin="0 4px" Content="{x:Static p:Resources.Amount}" ContentStringFormat="{}{0}:" />
+                <Label Grid.Row="3" Content="{x:Static p:Resources.Amount}" ContentStringFormat="{}{0}:" />
                 <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
                     ContentStringFormat="{}{0:C}" FontWeight="Bold" Content="{Binding Path=Amount}" />
 

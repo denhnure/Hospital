@@ -51,7 +51,7 @@ namespace Hospital.ViewModels.PatientRecords
                     HospitalAmount = HospitalAmount.Value,
                     Amount = Amount.Value
                 },
-                VisitDate = VisitDate.Date
+                VisitDate = VisitDate
             };
 
             SaveChangesToRepository(patientRecord);
