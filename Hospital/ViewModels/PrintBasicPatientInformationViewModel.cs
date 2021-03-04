@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -13,12 +12,9 @@ namespace Hospital.ViewModels
 {
     public class PrintBasicPatientInformationViewModel : IPageViewModel
     {
-        private const int PRECREATION_OF_FIXED_PAGE_DELAY = 100;
         private const double SYMBOLS_PER_PAGE = 120;
         private const string FONT_FAMILY = "Arial";
         private const int FONT_SIZE = 14;
-
-        private FixedPage fixedPage;
 
         public string Title => Resources.PrintBasicPatientInformation;
 
@@ -32,20 +28,14 @@ namespace Hospital.ViewModels
 
         public PrintBasicPatientInformationViewModel()
         {
-            Task.Delay(PRECREATION_OF_FIXED_PAGE_DELAY).ContinueWith(_ => Application.Current.Dispatcher.Invoke(() => CreateFixedPageWithHeader()));
-
             PrintCommand = new RelayCommand(Print, CanPrint);
             PrintDialog = new PrintDialog();
         }
 
         private void Print(object obj)
         {
-            fixedPage.Children.Add(CreateTextBlock($"{PatientName} {BirthYear} {Resources.BirthYearShortForm}", 155));
-
-            FixedDocument fixedDocument = CreateAndPopulateFixedDocument();
+            FixedDocument fixedDocument = CreateAndPopulateFixedDocument(CreateFixedPage());
             PrintDialog.PrintDocument(fixedDocument.DocumentPaginator, Resources.PrintBasicPatientInformation);
-
-            CreateFixedPageWithHeader();
         }
 
         private bool CanPrint(object parameter)
@@ -55,10 +45,10 @@ namespace Hospital.ViewModels
                 && BirthYear.Value >= Constants.OLDEST_PERSON_YEAR_OF_BIRTH;
         }
 
-        private FixedDocument CreateAndPopulateFixedDocument()
+        private FixedDocument CreateAndPopulateFixedDocument(FixedPage fixedPage)
         {
             FixedDocument fixedDocument = CreateBlankFixedDocument();
-            fixedDocument.Pages.Add(CreateAndPopulatePageContent());
+            fixedDocument.Pages.Add(CreateAndPopulatePageContent(fixedPage));
 
             return fixedDocument;
         }
@@ -71,7 +61,7 @@ namespace Hospital.ViewModels
             return fixedDocument;
         }
 
-        private PageContent CreateAndPopulatePageContent()
+        private PageContent CreateAndPopulatePageContent(FixedPage fixedPage)
         {
             var pageContent = new PageContent();
             ((IAddChild)pageContent).AddChild(fixedPage);
@@ -79,27 +69,30 @@ namespace Hospital.ViewModels
             return pageContent;
         }
 
-        private void CreateFixedPageWithHeader()
+        private FixedPage CreateFixedPage()
         {
-            fixedPage = new FixedPage()
+           var fixedPage = new FixedPage()
             {
                 Width = PrintDialog.PrintableAreaWidth,
                 Height = PrintDialog.PrintableAreaHeight
             };
 
-            foreach (var textBlock in CreateTextBlocksForHeader())
+            foreach (var textBlock in CreateTextBlocks())
             {
                 fixedPage.Children.Add(textBlock);
             }
+
+            return fixedPage;
         }
 
-        private List<TextBlock> CreateTextBlocksForHeader()
+        private List<TextBlock> CreateTextBlocks()
         {
             return new List<TextBlock>
             {
                 CreateTextBlock(Resources.FullCompanyName, 50),
                 CreateTextBlock(Resources.MinistryOfHealthCareLicense, 75),
-                CreateTextBlock(Resources.CompanyAddress, 100)
+                CreateTextBlock(Resources.CompanyAddress, 100),
+                CreateTextBlock($"{PatientName} {BirthYear} {Resources.BirthYearShortForm}", 155)
             };
         }
 
