@@ -2,7 +2,7 @@
 
 namespace Hospital.Enums
 {
-    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
+    [TypeConverter(typeof(EnumToLocalisedStringConverter))]
     public enum Gender
     {
         Male = 1,

@@ -4,9 +4,9 @@ using Hospital.Properties;
 
 namespace Hospital.Enums
 {
-    public class EnumDescriptionTypeConverter : EnumConverter
+    public class EnumToLocalisedStringConverter : EnumConverter
     {
-        public EnumDescriptionTypeConverter(Type type)
+        public EnumToLocalisedStringConverter(Type type)
             : base(type)
         {
         }
