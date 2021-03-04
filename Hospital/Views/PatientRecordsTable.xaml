@@ -12,7 +12,7 @@
         <DataGrid.Columns>
             <DataGridTextColumn Header="{x:Static p:Resources.PatientName}" Binding="{Binding Path=PatientName}" />
             <DataGridTextColumn Header="{x:Static p:Resources.BirthYear}" Binding="{Binding Path=BirthYear}" />
-            <DataGridTextColumn Header="{x:Static p:Resources.Gender}" Binding="{Binding Path=Gender, Converter={StaticResource EnumToStringConverter}}" />
+            <DataGridTextColumn Header="{x:Static p:Resources.Gender}" Binding="{Binding Path=Gender}" />
             <DataGridTextColumn Header="{x:Static p:Resources.TownOrVillage}" Binding="{Binding Path=TownOrVillage}" />
             <DataGridTextColumn Header="{x:Static p:Resources.DoctorName}" Binding="{Binding Path=DoctorName}" />
             <DataGridTextColumn Header="{x:Static p:Resources.DoctorAmount}" Binding="{Binding Path=FinancialData.DoctorAmount}" />

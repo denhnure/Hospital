@@ -11,19 +11,10 @@
         xmlns:MarkupExtensions="clr-namespace:Hospital.MarkupExtensions"
         DependencyProperties:FocusController.FocusFirstControl="true">
     <UserControl.Resources>
-        <Style TargetType="Label">
-            <Setter Property="HorizontalAlignment" Value="Right" />
-            <Setter Property="Margin" Value="0 5px 0 5px" />
-        </Style>
-        <Style x:Key="ControlBaseStyle" TargetType="{x:Type Control}">
-            <Setter Property="Height" Value="25px" />
-            <Setter Property="Margin" Value="0 5px 5px 5px" />
-        </Style>
-        <Style TargetType="TextBox" BasedOn="{StaticResource ControlBaseStyle}">
-            <Setter Property="MaxLines" Value="1" />
-        </Style>
-        <Style TargetType="DatePicker" BasedOn="{StaticResource ControlBaseStyle}" />
-        <Style TargetType="ComboBox" BasedOn="{StaticResource ControlBaseStyle}" />
+        <Style TargetType="Label" BasedOn="{StaticResource FormLabel}" />
+        <Style TargetType="TextBox" BasedOn="{StaticResource FormTextBox}" />
+        <Style TargetType="DatePicker" BasedOn="{StaticResource FormControlBaseStyle}" />
+        <Style TargetType="ComboBox" BasedOn="{StaticResource FormControlBaseStyle}" />
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -37,6 +28,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="15px" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -48,26 +40,25 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Margin="5px 15px 0 0" Content="{x:Static p:Resources.PatientName}" />
-            <TextBox Margin="0 15px 5px 5px" Grid.Column="1" Text="{Binding Path=PatientName, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="1" Content="{x:Static p:Resources.BirthYear}" />
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=BirthYear, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="2" Content="{x:Static p:Resources.Gender}" />
-            <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Source={MarkupExtensions:EnumBindingSource {x:Type Enums:Gender}}}" SelectedItem="{Binding Gender}" />
-            <Label Grid.Row="3" Content="{x:Static p:Resources.TownOrVillage}" />
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=TownOrVillage, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="4" Content="{x:Static p:Resources.DoctorName}" />
-            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=DoctorName, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="5" Content="{x:Static p:Resources.DoctorAmount}" />
-            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=DoctorAmount, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="6" Content="{x:Static p:Resources.HospitalAmount}" />
-            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=HospitalAmount, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="7" Content="{x:Static p:Resources.Amount}" />
-            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged}" />
-            <Label Grid.Row="8" Content="{x:Static p:Resources.VisitDate}" />
-            <DatePicker Grid.Row="8" Grid.Column="1" SelectedDate="{Binding Path=VisitDate}" />
-            <Button Grid.Row="9" Grid.Column="1" MinWidth="100px" Height="30px" HorizontalAlignment="Right" Margin="5px"
-            Command="{Binding SavePatientRecordCommand}" Content="{x:Static p:Resources.Save}" />
+            <Label Grid.Row="1" Content="{x:Static p:Resources.PatientName}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=PatientName, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="2" Content="{x:Static p:Resources.BirthYear}" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=BirthYear, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="3" Content="{x:Static p:Resources.Gender}" />
+            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Source={MarkupExtensions:EnumBindingSource {x:Type Enums:Gender}}}" SelectedItem="{Binding Gender}" />
+            <Label Grid.Row="4" Content="{x:Static p:Resources.TownOrVillage}" />
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=TownOrVillage, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="5" Content="{x:Static p:Resources.DoctorName}" />
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=DoctorName, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="6" Content="{x:Static p:Resources.DoctorAmount}" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=DoctorAmount, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" />
+            <Label Grid.Row="7" Content="{x:Static p:Resources.HospitalAmount}" />
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Path=HospitalAmount, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" />
+            <Label Grid.Row="8" Content="{x:Static p:Resources.Amount}" />
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" />
+            <Label Grid.Row="9" Content="{x:Static p:Resources.VisitDate}" />
+            <DatePicker Grid.Row="9" Grid.Column="1" SelectedDate="{Binding Path=VisitDate}" />
+            <Button Grid.Row="10" Grid.Column="1" Style="{StaticResource FormButton}" Command="{Binding SavePatientRecordCommand}" Content="{x:Static p:Resources.Save}" />
         </Grid>
         <views:MainMenuButton Grid.Row="1" />
     </Grid>

@@ -9,6 +9,10 @@
              DependencyProperties:FocusController.FocusFirstControl="true"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource FormLabel}" />
+        <Style TargetType="TextBox" BasedOn="{StaticResource FormTextBox}" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -21,10 +25,16 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="15px" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Button Grid.Column="1" MinWidth="100px" Height="30px" HorizontalAlignment="Right" Margin="5px"
-            Command="{Binding SavePatientRecordCommand}" Content="{x:Static p:Resources.Print}" />
+            <Label Grid.Row="1" Content="{x:Static p:Resources.PatientName}" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=PatientName, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Grid.Row="2" Content="{x:Static p:Resources.BirthYear}" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=BirthYear, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource FormButton}" Command="{Binding PrintCommand}" Content="{x:Static p:Resources.Print}" />
         </Grid>
         <views:MainMenuButton Grid.Row="1" />
     </Grid>

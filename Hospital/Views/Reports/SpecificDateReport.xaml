@@ -16,7 +16,7 @@
         <StackPanel Orientation="Horizontal">
             <DatePicker Width="250px" SelectedDate="{Binding Path=Date}" />
             <Button Margin="15px 0 0 0" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
-            Command="{Binding CreateSpecificDateReportCommand}" Content="{x:Static p:Resources.Calculate}" />
+            Command="{Binding CreateSpecificDateReportCommand}" Content="{x:Static p:Resources.Generate}" />
         </StackPanel>
 
         <views:PatientRecordsTable Grid.Row="1" Grid.ColumnSpan="2" Margin="0 25px 0 0" />

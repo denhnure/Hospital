@@ -31,14 +31,14 @@
                 <Label HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.PatientName}" />
                 <TextBox Grid.Column="1" Margin="0 5px" Text="{Binding PatientName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"></TextBox>
 
-                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">From</Label>
+                <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.From}" />
                 <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" SelectedDate="{Binding Path=FromDate}" />
 
-                <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">To</Label>
+                <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Static p:Resources.To}" />
                 <DatePicker Grid.Row="2" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
 
                 <Button Grid.Row="3" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
-                    Command="{Binding CreatePatientReportCommand}" Content="{x:Static p:Resources.Calculate}" />
+                    Command="{Binding CreatePatientReportCommand}" Content="{x:Static p:Resources.Generate}" />
             </Grid>
         </GroupBox>
         <GroupBox Grid.Column="1" Header="{x:Static p:Resources.Results}" Padding="5px" Margin="10px">

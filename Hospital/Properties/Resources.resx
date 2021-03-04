@@ -121,34 +121,46 @@
     <value>Add a new patient record</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>Сума</value>
   </data>
   <data name="BirthYear" xml:space="preserve">
-    <value>Birth year</value>
+    <value>Рік народження</value>
   </data>
-  <data name="Calculate" xml:space="preserve">
-    <value>Calculate</value>
+  <data name="BirthYearShortForm" xml:space="preserve">
+    <value>р.н.</value>
+  </data>
+  <data name="CompanyAddress" xml:space="preserve">
+    <value>м.Мелітополь, вул.Героїв України, 27</value>
   </data>
   <data name="DateRangeReport" xml:space="preserve">
     <value>Date range report</value>
   </data>
   <data name="DoctorAmount" xml:space="preserve">
-    <value>Doctor amount</value>
+    <value>Частка лікаря</value>
   </data>
   <data name="DoctorName" xml:space="preserve">
-    <value>Doctor name</value>
+    <value>Лікар</value>
   </data>
   <data name="EditLastPatientRecord" xml:space="preserve">
-    <value>Edit the last patient record</value>
+    <value>Редагувати останній запис</value>
   </data>
   <data name="Female" xml:space="preserve">
-    <value>Female</value>
+    <value>Жіноча</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>З</value>
+  </data>
+  <data name="FullCompanyName" xml:space="preserve">
+    <value>ПП «Невромед»</value>
   </data>
   <data name="Gender" xml:space="preserve">
-    <value>Gender</value>
+    <value>Стать</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Згенерувати</value>
   </data>
   <data name="HospitalAmount" xml:space="preserve">
-    <value>Hospital amount</value>
+    <value>Частка клініки</value>
   </data>
   <data name="InputData" xml:space="preserve">
     <value>Input data</value>
@@ -157,13 +169,16 @@
     <value>Main menu</value>
   </data>
   <data name="Male" xml:space="preserve">
-    <value>Male</value>
+    <value>Чоловіча</value>
+  </data>
+  <data name="MinistryOfHealthCareLicense" xml:space="preserve">
+    <value>Ліцензія МОЗ України №АГ597651</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="PatientName" xml:space="preserve">
-    <value>Patient name</value>
+    <value>П І Б</value>
   </data>
   <data name="PatientNotFound" xml:space="preserve">
     <value>this patient was not found in the system</value>
@@ -178,22 +193,22 @@
     <value>this patient was not at the clinic during the specified period</value>
   </data>
   <data name="Print" xml:space="preserve">
-    <value>Print</value>
+    <value>Друк</value>
   </data>
   <data name="PrintBasicPatientInformation" xml:space="preserve">
     <value>Print basic patient information</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>Звіти</value>
   </data>
   <data name="Results" xml:space="preserve">
     <value>Results</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Зберегти</value>
   </data>
   <data name="SelectDate" xml:space="preserve">
-    <value>Select a date</value>
+    <value>Виберіть дату</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
@@ -201,13 +216,16 @@
   <data name="SpecificDateReport" xml:space="preserve">
     <value>Specific date report</value>
   </data>
+  <data name="To" xml:space="preserve">
+    <value>По</value>
+  </data>
   <data name="TownOrVillage" xml:space="preserve">
-    <value>Town / Village</value>
+    <value>Місто/село</value>
   </data>
   <data name="ValidationErrorTemplate" xml:space="preserve">
-    <value>Ошибка: {0}!</value>
+    <value>Помилка: {0}!</value>
   </data>
   <data name="VisitDate" xml:space="preserve">
-    <value>Visit date</value>
+    <value>Дата</value>
   </data>
 </root>

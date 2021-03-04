@@ -152,8 +152,8 @@
     <Compile Include="Behaviours\PasswordBoxBehavior.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DependencyProperties\FocusController.cs" />
+    <Compile Include="TypeConverters\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Models\PatientRecordFinancialData.cs" />
-    <Compile Include="ValueConverters\EnumToStringConverter.cs" />
     <Compile Include="Helpers\DateRangeValidator.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />

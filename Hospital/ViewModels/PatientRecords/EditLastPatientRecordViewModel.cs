@@ -19,10 +19,9 @@ namespace Hospital.ViewModels.PatientRecords
             TownOrVillage = lastPatientRecord.TownOrVillage;
             DoctorName = lastPatientRecord.DoctorName;
 
-            //TODO: use int?
-            DoctorAmount = lastPatientRecord.FinancialData.DoctorAmount.ToString();
-            HospitalAmount = lastPatientRecord.FinancialData.HospitalAmount.ToString();
-            Amount = lastPatientRecord.FinancialData.Amount.ToString();
+            DoctorAmount = lastPatientRecord.FinancialData.DoctorAmount;
+            HospitalAmount = lastPatientRecord.FinancialData.HospitalAmount;
+            Amount = lastPatientRecord.FinancialData.Amount;
             VisitDate = lastPatientRecord.VisitDate;
         }
 

@@ -70,7 +70,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Amount.
+        ///   Looks up a localized string similar to Сума.
         /// </summary>
         public static string Amount {
             get {
@@ -79,7 +79,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Birth year.
+        ///   Looks up a localized string similar to Рік народження.
         /// </summary>
         public static string BirthYear {
             get {
@@ -88,11 +88,20 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculate.
+        ///   Looks up a localized string similar to р.н..
         /// </summary>
-        public static string Calculate {
+        public static string BirthYearShortForm {
             get {
-                return ResourceManager.GetString("Calculate", resourceCulture);
+                return ResourceManager.GetString("BirthYearShortForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to м.Мелітополь, вул.Героїв України, 27.
+        /// </summary>
+        public static string CompanyAddress {
+            get {
+                return ResourceManager.GetString("CompanyAddress", resourceCulture);
             }
         }
         
@@ -106,7 +115,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctor amount.
+        ///   Looks up a localized string similar to Частка лікаря.
         /// </summary>
         public static string DoctorAmount {
             get {
@@ -115,7 +124,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctor name.
+        ///   Looks up a localized string similar to Лікар.
         /// </summary>
         public static string DoctorName {
             get {
@@ -124,7 +133,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit the last patient record.
+        ///   Looks up a localized string similar to Редагувати останній запис.
         /// </summary>
         public static string EditLastPatientRecord {
             get {
@@ -133,7 +142,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Female.
+        ///   Looks up a localized string similar to Жіноча.
         /// </summary>
         public static string Female {
             get {
@@ -142,7 +151,25 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gender.
+        ///   Looks up a localized string similar to З.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ПП «Невромед».
+        /// </summary>
+        public static string FullCompanyName {
+            get {
+                return ResourceManager.GetString("FullCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Стать.
         /// </summary>
         public static string Gender {
             get {
@@ -151,7 +178,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hospital amount.
+        ///   Looks up a localized string similar to Згенерувати.
+        /// </summary>
+        public static string Generate {
+            get {
+                return ResourceManager.GetString("Generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Частка клініки.
         /// </summary>
         public static string HospitalAmount {
             get {
@@ -178,11 +214,20 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Male.
+        ///   Looks up a localized string similar to Чоловіча.
         /// </summary>
         public static string Male {
             get {
                 return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ліцензія МОЗ України №АГ597651.
+        /// </summary>
+        public static string MinistryOfHealthCareLicense {
+            get {
+                return ResourceManager.GetString("MinistryOfHealthCareLicense", resourceCulture);
             }
         }
         
@@ -196,7 +241,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patient name.
+        ///   Looks up a localized string similar to П І Б.
         /// </summary>
         public static string PatientName {
             get {
@@ -241,7 +286,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Print.
+        ///   Looks up a localized string similar to Друк.
         /// </summary>
         public static string Print {
             get {
@@ -259,7 +304,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reports.
+        ///   Looks up a localized string similar to Звіти.
         /// </summary>
         public static string Reports {
             get {
@@ -277,7 +322,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Зберегти.
         /// </summary>
         public static string Save {
             get {
@@ -286,7 +331,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a date.
+        ///   Looks up a localized string similar to Виберіть дату.
         /// </summary>
         public static string SelectDate {
             get {
@@ -313,7 +358,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Town / Village.
+        ///   Looks up a localized string similar to По.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Місто/село.
         /// </summary>
         public static string TownOrVillage {
             get {
@@ -322,7 +376,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ошибка: {0}!.
+        ///   Looks up a localized string similar to Помилка: {0}!.
         /// </summary>
         public static string ValidationErrorTemplate {
             get {
@@ -331,7 +385,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visit date.
+        ///   Looks up a localized string similar to Дата.
         /// </summary>
         public static string VisitDate {
             get {

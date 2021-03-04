@@ -8,7 +8,6 @@ namespace Hospital.ViewModels.PatientRecords
 {
     public abstract class BasePatientRecordViewModel
     {
-        private const int OLDEST_PERSON_YEAR_OF_BIRTH = 1900;
         private readonly MainWindowViewModel mainWindowViewModel;
 
         public string PatientName { get; set; }
@@ -21,11 +20,11 @@ namespace Hospital.ViewModels.PatientRecords
 
         public string DoctorName { get; set; }
 
-        public string Amount { get; set; }
+        public double? DoctorAmount { get; set; }
 
-        public string DoctorAmount { get; set; }
+        public double? HospitalAmount { get; set; }
 
-        public string HospitalAmount { get; set; }
+        public double? Amount { get; set; }
 
         public DateTime VisitDate { get; set; }
 
@@ -48,9 +47,9 @@ namespace Hospital.ViewModels.PatientRecords
                 DoctorName = DoctorName,
                 FinancialData = new PatientRecordFinancialData
                 {
-                    DoctorAmount = double.Parse(DoctorAmount),
-                    HospitalAmount = double.Parse(HospitalAmount),
-                    Amount = double.Parse(Amount)
+                    DoctorAmount = DoctorAmount.Value,
+                    HospitalAmount = HospitalAmount.Value,
+                    Amount = Amount.Value
                 },
                 VisitDate = VisitDate.Date
             };
@@ -64,19 +63,23 @@ namespace Hospital.ViewModels.PatientRecords
         public bool CanSavePatientRecord(object parameter)
         {
             return !string.IsNullOrEmpty(PatientName)
-                && BirthYear.HasValue && BirthYear.Value >= OLDEST_PERSON_YEAR_OF_BIRTH
+                && BirthYear.HasValue && BirthYear.Value >= Constants.OLDEST_PERSON_YEAR_OF_BIRTH
                 && !string.IsNullOrEmpty(DoctorName)
                 && IsValidAmount(DoctorAmount)
                 && IsValidAmount(HospitalAmount)
                 && IsValidAmount(Amount)
+                && OverallAmountMatchesToDoctorAndHospitalAmounts()
                 && VisitDate.Date <= DateTime.Today;
         }
 
-        private bool IsValidAmount(string amount)
+        private bool IsValidAmount(double? amount)
         {
-            double parsedAmount;
-            
-            return !string.IsNullOrEmpty(amount) && double.TryParse(amount, out parsedAmount) && parsedAmount > 0;
+            return amount.HasValue && amount.Value >= 0;
+        }
+
+        private bool OverallAmountMatchesToDoctorAndHospitalAmounts()
+        {
+            return Math.Abs(DoctorAmount.Value + HospitalAmount.Value - Amount.Value) < 0.0000001;
         }
     }
 }

@@ -28,9 +28,25 @@
         </DataTemplate>
         <valueConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" True="Visible" False="Collapsed" />
         <valueConverters:BooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" True="Collapsed" False="Visible" />
-        <valueConverters:EnumToStringConverter x:Key="EnumToStringConverter" />
         <Style TargetType="Grid">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
+        <Style x:Key="FormLabel" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0 5px 0 5px" />
+        </Style>
+        <Style x:Key="FormControlBaseStyle" TargetType="{x:Type Control}">
+            <Setter Property="Height" Value="25px" />
+            <Setter Property="Margin" Value="0 5px 5px 5px" />
+        </Style>
+        <Style x:Key="FormTextBox" TargetType="TextBox" BasedOn="{StaticResource FormControlBaseStyle}">
+            <Setter Property="MaxLines" Value="1" />
+        </Style>
+        <Style x:Key="FormButton" TargetType="Button">
+            <Setter Property="MinWidth" Value="100px" />
+            <Setter Property="Height" Value="30px" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="5px" />
         </Style>
     </Application.Resources>
 </Application>

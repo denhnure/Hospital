@@ -30,7 +30,7 @@
                 <DatePicker Grid.Row="1" Grid.Column="1" Margin="0 5px" VerticalAlignment="Center" SelectedDate="{Binding Path=ToDate}"></DatePicker>
 
                 <Button Grid.Row="2" Grid.Column="1" Margin="0 5px" Width="100px" HorizontalAlignment="Right" VerticalAlignment="Center"
-                    Command="{Binding CreateDateRangeReportCommand}" Content="{x:Static p:Resources.Calculate}" />
+                    Command="{Binding CreateDateRangeReportCommand}" Content="{x:Static p:Resources.Generate}" />
             </Grid>
         </GroupBox>
         <GroupBox Grid.Column="1" Header="{x:Static p:Resources.Results}" Padding="5px" Margin="10px">
