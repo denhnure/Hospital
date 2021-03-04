@@ -99,7 +99,7 @@ namespace Hospital.ViewModels.Reports
 
             if (patientCount == 0)
             {
-                ValidationText = string.Format(Resources.ValidationErrorTemplate, "пациентов не было в клинике в указанный период");
+                ValidationText = string.Format(Resources.ValidationErrorTemplate, Resources.PatientsWereNotAtClinicDuringSpecifiedPeriod);
                 return;
             }
 

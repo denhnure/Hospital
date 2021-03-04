@@ -89,12 +89,12 @@
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Label HorizontalAlignment="Center" Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}" 
                 FontSize="14px"
-                Content="Wrond credentials. Try one more time." />
+                Content="{x:Static p:Resources.WrongCredentialsTryOneMoreTime}" />
             <Button Visibility="{Binding Path=WrongCredentials, Converter={StaticResource BooleanToVisibilityConverter}}"
                 Margin="8px"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Content="OK"
+                Content="{x:Static p:Resources.Ok}"
                 MinHeight="28px"
                 MinWidth="120px"
                 IsDefault="True"

@@ -177,14 +177,17 @@
   <data name="NumberOfPatients" xml:space="preserve">
     <value>Кількість пацієнтів</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Добре</value>
+  </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="PatientName" xml:space="preserve">
     <value>П І Б</value>
   </data>
   <data name="PatientNotFound" xml:space="preserve">
-    <value>this patient was not found in the system</value>
+    <value>такого пацієнта не існує</value>
   </data>
   <data name="PatientRecords" xml:space="preserve">
     <value>Записи пацієнтів</value>
@@ -192,8 +195,11 @@
   <data name="PatientReport" xml:space="preserve">
     <value>По пацієнту</value>
   </data>
+  <data name="PatientsWereNotAtClinicDuringSpecifiedPeriod" xml:space="preserve">
+    <value>пацієнтів не було у клініці протягом зазначеного періоду</value>
+  </data>
   <data name="PatientWasNotAtClinicDuringSpecifiedPeriod" xml:space="preserve">
-    <value>this patient was not at the clinic during the specified period</value>
+    <value>такий пацієнт не був у клініці протягом зазначеного періоду</value>
   </data>
   <data name="Print" xml:space="preserve">
     <value>Друк</value>
@@ -214,7 +220,7 @@
     <value>Виберіть дату</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign in</value>
+    <value>Вхід</value>
   </data>
   <data name="SpecificDateReport" xml:space="preserve">
     <value>За певну дату</value>
@@ -230,5 +236,8 @@
   </data>
   <data name="VisitDate" xml:space="preserve">
     <value>Дата</value>
+  </data>
+  <data name="WrongCredentialsTryOneMoreTime" xml:space="preserve">
+    <value>Неправильний пароль. Спробуйте ще.</value>
   </data>
 </root>

@@ -241,7 +241,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to Добре.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль.
         /// </summary>
         public static string Password {
             get {
@@ -259,7 +268,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to this patient was not found in the system.
+        ///   Looks up a localized string similar to такого пацієнта не існує.
         /// </summary>
         public static string PatientNotFound {
             get {
@@ -286,7 +295,16 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to this patient was not at the clinic during the specified period.
+        ///   Looks up a localized string similar to пацієнтів не було у клініці протягом зазначеного періоду.
+        /// </summary>
+        public static string PatientsWereNotAtClinicDuringSpecifiedPeriod {
+            get {
+                return ResourceManager.GetString("PatientsWereNotAtClinicDuringSpecifiedPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to такий пацієнт не був у клініці протягом зазначеного періоду.
         /// </summary>
         public static string PatientWasNotAtClinicDuringSpecifiedPeriod {
             get {
@@ -349,7 +367,7 @@ namespace Hospital.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign in.
+        ///   Looks up a localized string similar to Вхід.
         /// </summary>
         public static string SignIn {
             get {
@@ -399,6 +417,15 @@ namespace Hospital.Properties {
         public static string VisitDate {
             get {
                 return ResourceManager.GetString("VisitDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильний пароль. Спробуйте ще..
+        /// </summary>
+        public static string WrongCredentialsTryOneMoreTime {
+            get {
+                return ResourceManager.GetString("WrongCredentialsTryOneMoreTime", resourceCulture);
             }
         }
     }

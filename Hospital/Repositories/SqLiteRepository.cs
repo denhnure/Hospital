@@ -12,7 +12,6 @@ namespace Hospital.Repositories
         private const string PASSWORD = "1";
         private readonly string CONNECTION_STRING;
 
-        private ObservableCollection<PatientRecord> patientRecords;
         private string password;
 
         public bool IsLoggedIn => password == PASSWORD;
@@ -45,8 +44,6 @@ namespace Hospital.Repositories
 
         public void AddPatientRecord(PatientRecord patientRecord)
         {
-            patientRecords.Insert(0, patientRecord);
-
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
                 con.Open();
@@ -76,7 +73,7 @@ namespace Hospital.Repositories
 
         public ObservableCollection<PatientRecord> GetPatientRecords(DateTime? date = null)
         {
-            patientRecords = new ObservableCollection<PatientRecord>();
+            var patientRecords = new ObservableCollection<PatientRecord>();
 
             using (var con = new SQLiteConnection(CONNECTION_STRING))
             {
@@ -247,17 +244,9 @@ namespace Hospital.Repositories
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
 
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
+                    sqlDataReader.Read();
 
-                    bool isValidResult = sqlDataReader.Read();
-
-                    return !isValidResult
-                        ? null
-                        : new PatientRecordFinancialData
-                        {
-                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
-                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                            Amount = (double)sqlDataReader["Amount"],
-                        };
+                    return CreatePatientRecordFinancialData(sqlDataReader);
                 }
             }
         }
@@ -300,17 +289,9 @@ namespace Hospital.Repositories
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
 
                     SQLiteDataReader sqlDataReader = command.ExecuteReader();
+                    sqlDataReader.Read();
 
-                    bool isValidResult = sqlDataReader.Read();
-
-                    return !isValidResult
-                        ? null
-                        : new PatientRecordFinancialData
-                        {
-                            DoctorAmount = (double)sqlDataReader["DoctorAmount"],
-                            HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                            Amount = (double)sqlDataReader["Amount"],
-                        };
+                    return CreatePatientRecordFinancialData(sqlDataReader);
                 }
             }
         }
@@ -324,14 +305,21 @@ namespace Hospital.Repositories
                 Gender = (Gender)Convert.ToInt32(sqlDataReader["Gender"]),
                 TownOrVillage = (string)sqlDataReader["TownOrVillage"],
                 DoctorName = (string)sqlDataReader["DoctorName"],
-                FinancialData = new PatientRecordFinancialData
+                FinancialData = CreatePatientRecordFinancialData(sqlDataReader),
+                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
+            };
+        }
+
+        private PatientRecordFinancialData CreatePatientRecordFinancialData(SQLiteDataReader sqlDataReader)
+        {
+            return sqlDataReader["Amount"] is DBNull
+                ? null
+                : new PatientRecordFinancialData
                 {
                     DoctorAmount = (double)sqlDataReader["DoctorAmount"],
                     HospitalAmount = (double)sqlDataReader["HospitalAmount"],
-                    Amount = (double)sqlDataReader["Amount"]
-                },
-                VisitDate = DateTime.Parse((string)sqlDataReader["VisitDate"])
-            };
+                    Amount = (double)sqlDataReader["Amount"],
+                };
         }
     }
 }
