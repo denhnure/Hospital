@@ -113,8 +113,8 @@ namespace Hospital.Repositories
                     command.CommandText = @"SELECT *
                                             FROM [PatientRecord]
                                             WHERE [PatientName] = @patientName
-                                                AND ([VisitDate] >= @fromDate OR @fromDate IS NULL) 
-                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+                                                AND (date([VisitDate]) >= date(@fromDate) OR @fromDate IS NULL) 
+                                                AND (date([VisitDate]) <= date(@toDate) OR @toDate IS NULL)";
 
                     command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
@@ -236,8 +236,8 @@ namespace Hospital.Repositories
                     command.CommandText = @"SELECT SUM(DoctorAmount) AS DoctorAmount, SUM(HospitalAmount) AS HospitalAmount, SUM(Amount) AS Amount
                                             FROM [PatientRecord]
                                             WHERE [PatientName] = @patientName
-                                                AND ([VisitDate] >= @fromDate OR @fromDate IS NULL) 
-                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+                                                AND (date([VisitDate]) >= date(@fromDate) OR @fromDate IS NULL) 
+                                                AND (date([VisitDate]) <= date(@toDate) OR @toDate IS NULL)";
 
                     command.Parameters.Add(new SQLiteParameter("@patientName", patientName));
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
@@ -261,8 +261,8 @@ namespace Hospital.Repositories
                 {
                     command.CommandText = @"SELECT COUNT(*)
                                             FROM [PatientRecord]
-                                            WHERE ([VisitDate] >= @fromDate OR @fromDate IS NULL)
-                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+                                            WHERE (date([VisitDate]) >= date(@fromDate) OR @fromDate IS NULL)
+                                                AND (date([VisitDate]) <= date(@toDate) OR @toDate IS NULL)";
 
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
@@ -282,8 +282,8 @@ namespace Hospital.Repositories
                 {
                     command.CommandText = @"SELECT SUM(DoctorAmount) AS DoctorAmount, SUM(HospitalAmount) AS HospitalAmount, SUM(Amount) AS Amount
                                             FROM [PatientRecord]
-                                            WHERE ([VisitDate] >= @fromDate OR @fromDate IS NULL)
-                                                AND ([VisitDate] <= @toDate OR @toDate IS NULL)";
+                                            WHERE (date([VisitDate]) >= date(@fromDate) OR @fromDate IS NULL)
+                                                AND (date([VisitDate]) <= date(@toDate) OR @toDate IS NULL)";
 
                     command.Parameters.Add(new SQLiteParameter("@fromDate", fromDate));
                     command.Parameters.Add(new SQLiteParameter("@toDate", toDate));
